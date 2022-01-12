@@ -18,7 +18,7 @@ const Rating = ({value, onChange}) => {
         <div classname='w-fit flex items-center' onMouseLeave={handleMouseLeave}>
             {[1, 2, 3, 4, 5].map((val) => (
                 <button 
-                    className='px-1 w-6 h-6 transition-all duration-200 ease-in' 
+                    className='w-5 h-5 mx-1 transition-all duration-200 ease-in text-center' 
                     onMouseOver={() => setHover(val)} 
                     onClick={() => setRating(val)}
                 >

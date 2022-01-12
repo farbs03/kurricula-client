@@ -20,12 +20,14 @@ const Navbar = (props) => {
         <div>
             <div className="border-b border-b-gray-100 bg-white">
                 <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <div className='flex items-center'>
-                        <div className='w-8 h-8 border-2 border-emerald-500 inline-flex items-center justify-center flex-shrink-0 rounded-full mr-2'>
-                            <AcademicCapIcon className='text-emerald-500 w-6 h-6' />
+                    <a href="/">
+                        <div className='flex items-center'>
+                            <div className='w-8 h-8 border-2 border-emerald-500 inline-flex items-center justify-center flex-shrink-0 rounded-full mr-2'>
+                                <AcademicCapIcon className='text-emerald-500 w-6 h-6' />
+                            </div>
+                            <p className={theme.title}>Kurricula</p>
                         </div>
-                        <p className={theme.title}>Kurricula</p>
-                    </div>
+                    </a>
                     <div className='items-center hidden md:flex md:flex-wrap'>
                         {links.map((link) => (
                             <a 

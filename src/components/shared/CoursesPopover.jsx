@@ -4,6 +4,7 @@ import { Popover, Transition } from '@headlessui/react'
 
 import {
     BookmarkAltIcon,
+    BookOpenIcon,
     CalendarIcon,
     ChartBarIcon,
     CursorClickIcon,
@@ -22,9 +23,9 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 const courses = [
     {
         name: 'Course List',
-        description: 'Get a better understanding of where your traffic is coming from.',
+        description: 'See a list of all courses and their reviews',
         href: '/courses',
-        icon: ChartBarIcon,
+        icon: BookOpenIcon,
     },
     {
         name: 'Engagement',
@@ -103,19 +104,6 @@ const CoursesPopover = () => {
                                         <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                     </div>
                                 </a>
-                                ))}
-                            </div>
-                            <div className="px-5 py-5 bg-gray-50 space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
-                                {callsToAction.map((item) => (
-                                <div key={item.name} className="flow-root">
-                                    <a
-                                        href={item.href}
-                                        className="-m-3 p-3 flex items-center rounded-md text-base font-medium  hover:bg-gray-100 transition ease-in duration-200"
-                                    >
-                                        <item.icon className="flex-shrink-0 h-6 w-6 text-gray-400" aria-hidden="true" />
-                                        <span className="ml-3">{item.name}</span>
-                                    </a>
-                                </div>
                                 ))}
                             </div>
                         </div>
