@@ -4,6 +4,7 @@ import { CheckCircleIcon, EyeIcon, EyeOffIcon, XCircleIcon } from '@heroicons/re
 import Button from '../../components/Button'
 import {theme} from "../../theme"
 import Alert from '../../components/Alert'
+import { AcademicCapIcon } from '@heroicons/react/outline'
 
 const PasswordVisibleButton = ({isVisible, onClick}) => {
     return (
@@ -65,12 +66,19 @@ const Register = () => {
                 window.location.pathname = '/'
             }
             setAlert(false)
-        }, 1220)
+        }, 1400)
     }
 
     return (
-        <div className='max-w-lg w-full mx-auto bg-white rounded-lg p-6'>
-            <p className='font-bold text-2xl text-center mb-4'>Register</p>
+        <div className='max-w-lg w-full mx-auto bg-white rounded-md p-6'>
+            
+            <div className='block w-12 h-12 mx-auto mb-4'>
+                <div className='w-12 h-12 border-4 inline-flex border-emerald-500 items-center justify-center flex-shrink-0 rounded-full'>
+                    <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
+                </div>
+            </div>
+
+            <p className='font-bold text-xl text-center mb-4'>Register</p>
             <div>
 
                 <div className='grid grid-cols-6 gap-4 mb-2'>
