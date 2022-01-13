@@ -11,7 +11,7 @@ import {
 
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-const courses = [
+export const courses = [
     {
         name: 'Courses',
         description: 'See a list of all courses and their reviews',

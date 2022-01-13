@@ -32,14 +32,14 @@ const Drawer = ({open, onClose, children}) => {
                                 <div className="h-full flex flex-col py-6 overflow-x-hidden bg-white shadow-xl overflow-y-scroll">
                                     <button
                                         type="button"
-                                        className="rounded-md ml-5 text-gray-600 hover:text-gray-500 focus:outline-none transition duration-200 ease-in"
+                                        className="rounded-md ml-4 text-gray-600 hover:text-gray-500 focus:outline-none transition duration-200 ease-in"
                                         onClick={onClose}
                                     >
                                         <span className="sr-only">Close panel</span>
                                         <XIcon className="h-6 w-6" aria-hidden="true" />
                                     </button>
 
-                                    <div className="mt-4 relative flex-1 mx-auto">
+                                    <div className="mt-4 relative p-4">
                                         {children}
                                     </div>
 
