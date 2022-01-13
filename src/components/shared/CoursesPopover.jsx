@@ -3,54 +3,39 @@ import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 
 import {
-    BookmarkAltIcon,
-    BookOpenIcon,
-    CalendarIcon,
-    ChartBarIcon,
-    CursorClickIcon,
-    MenuIcon,
-    PhoneIcon,
-    PlayIcon,
-    RefreshIcon,
-    ShieldCheckIcon,
-    SupportIcon,
-    ViewGridIcon,
-    XIcon,
+    CollectionIcon,
+    ChatIcon,
+    SearchCircleIcon,
+    CalendarIcon
 } from '@heroicons/react/outline'
 
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
 const courses = [
     {
-        name: 'Course List',
+        name: 'Courses',
         description: 'See a list of all courses and their reviews',
         href: '/courses',
-        icon: BookOpenIcon,
+        icon: CollectionIcon,
     },
     {
-        name: 'Engagement',
-        description: 'Speak directly to your customers in a more meaningful way.',
+        name: 'Tutoring',
+        description: 'Chat with a tutor if you need any help with your courses',
         href: '#',
-        icon: CursorClickIcon,
+        icon: ChatIcon,
     },
-    { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
+    { 
+        name: 'Resources', 
+        description: "Browse our curated list of resources for each course", 
+        href: '#', 
+        icon: SearchCircleIcon 
+    },
     {
-        name: 'Integrations',
-        description: "Connect with third-party tools that you're already using.",
-        href: '#',
-        icon: ViewGridIcon,
+        name: 'Study',
+        description: "Create a study plan and see important upcoming AP test dates",
+        href: '/study',
+        icon: CalendarIcon,
     },
-    {
-        name: 'Automations',
-        description: 'Build strategic funnels that will drive your customers to convert',
-        href: '#',
-        icon: RefreshIcon,
-    },
-]
-
-const callsToAction = [
-    { name: 'Watch Demo', href: '#', icon: PlayIcon },
-    { name: 'Contact Sales', href: '#', icon: PhoneIcon },
 ]
 
 function classNames(...classes) {
@@ -90,7 +75,7 @@ const CoursesPopover = () => {
                     leaveTo="opacity-0 translate-y-1"
                 >
                     <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
-                        <div className="rounded-lg shadow-lg ring-opacity-5 overflow-hidden">
+                        <div className="rounded-lg drop-shadow-xl ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                 {courses.map((item) => (
                                 <a

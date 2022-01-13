@@ -72,7 +72,7 @@ const Register = () => {
     return (
         <div className='max-w-lg w-full mx-auto bg-white rounded-md p-6'>
             
-            <div className='block w-12 h-12 mx-auto mb-4'>
+            <div className='block w-12 h-12 mx-auto mb-2'>
                 <div className='w-12 h-12 border-4 inline-flex border-emerald-500 items-center justify-center flex-shrink-0 rounded-full'>
                     <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
                 </div>

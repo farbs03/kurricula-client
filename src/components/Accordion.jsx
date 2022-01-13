@@ -6,7 +6,7 @@ const Accordion = ({title, children}) => {
     <Disclosure>
       {({ open }) => (
         <>
-          <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-left transition duration-200 ease-in text-gray-900 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">
+          <Disclosure.Button className="flex justify-between w-full my-1 px-4 py-2 text-sm font-medium text-left transition duration-200 ease-in text-gray-900 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">
             <span>{title}</span>
             <ChevronUpIcon
               className={`${
@@ -19,7 +19,7 @@ const Accordion = ({title, children}) => {
             enter="transition duration-200 ease-out"
             enterFrom="transform scale-95 opacity-0"
             enterTo="transform scale-100 opacity-100"
-            leave="transition duration-75 ease-out"
+            leave="transition duration-200 ease-out"
             leaveFrom="transform scale-100 opacity-100"
             leaveTo="transform scale-95 opacity-0"
           >

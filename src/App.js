@@ -9,6 +9,8 @@ import Blog from './views/Blog/Blog';
 import Courses from './views/Courses/Courses';
 import Login from './views/Login/Login';
 import Register from './views/Register/Register';
+import Course from './views/Courses/Course/Course';
+import Study from './views/Study/Study';
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/courses' element={<Courses />} />
+          <Route path='/courses/:course' element={<Course />} />
+          <Route path='/study' element={<Study />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/' element={<Home />} />

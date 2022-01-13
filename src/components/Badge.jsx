@@ -1,9 +1,6 @@
 import React from 'react'
 
-const Badge = ({color='red', children}) => {
-
-    let bg = `bg-${color}-100`
-    let text = `text-${color}-500`
+const Badge = ({text='text-gray-500', bg='bg-gray-100', children}) => {
 
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
@@ -13,7 +10,7 @@ const Badge = ({color='red', children}) => {
         <div 
             className={
                 classNames(
-                    bg, text, 'font-semibold text-xs p-1 rounded-md w-fit'
+                    text, bg, 'font-semibold text-xs p-1 rounded-md w-fit'
                 )
             }
         >

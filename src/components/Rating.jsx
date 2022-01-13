@@ -2,7 +2,7 @@ import StarSolid from '@heroicons/react/solid/StarIcon'
 import StarOutline from '@heroicons/react/outline/StarIcon'
 import React , {useState} from 'react'
 
-const Rating = ({value, onChange}) => {
+const Rating = ({variant, displayValue}) => {
 
     const [rating, setRating] = useState(0)
     const [hover, setHover] = useState(0)
@@ -17,17 +17,32 @@ const Rating = ({value, onChange}) => {
     return (
         <div classname='w-fit flex items-center' onMouseLeave={handleMouseLeave}>
             {[1, 2, 3, 4, 5].map((val) => (
-                <button 
-                    className='w-5 h-5 mx-1 transition-all duration-200 ease-in text-center' 
-                    onMouseOver={() => setHover(val)} 
-                    onClick={() => setRating(val)}
-                >
-                    {val <= hover || val <= rating ?
-                        <StarSolid className='w-5 h-5 text-yellow-300' />
+                <>
+                    {variant === 'display' ?
+                        <button 
+                            className='w-5 h-5 mx-1 transition-all duration-200 ease-in text-center' 
+                        >
+                            {val <= displayValue ?
+                                <StarSolid className='w-5 h-5 text-yellow-300' />
+                                :
+                                <StarOutline className='w-5 h-5 text-gray-500' />
+                            }
+                        </button>
                         :
-                        <StarOutline className='w-5 h-5 text-gray-500' />
+                        <button 
+                            className='w-5 h-5 mx-1 transition-all duration-200 ease-in text-center' 
+                            onMouseOver={() => setHover(val)} 
+                            onClick={() => setRating(val)}
+                        >
+                            {val <= hover || val <= rating ?
+                                <StarSolid className='w-5 h-5 text-yellow-300' />
+                                :
+                                <StarOutline className='w-5 h-5 text-gray-500' />
+                            }
+                        </button>
                     }
-                </button>
+                    
+                </>
             ))}
         </div>
     )
