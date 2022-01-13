@@ -4,6 +4,7 @@ import "./calendar.css"
 import { format, addMonths, subMonths } from "date-fns"
 import {CheckCircleIcon, ChevronLeftIcon, ChevronRightIcon, MenuIcon, TrashIcon} from "@heroicons/react/solid"
 import { CalendarIcon } from '@heroicons/react/outline'
+import { motion, AnimatePresence } from 'framer-motion'
 
 
 
@@ -16,7 +17,19 @@ const CalendarDisplay = () => {
                 completed: false, 
                 startTime: 60 * 13, //minute representation of 1:00 PM*/
                 endTime: 60 * 14  
-            }
+            },
+            {
+                title: 'Study for science class', 
+                completed: false, 
+                startTime: 60 * (3 + 12),
+                endTime: 60 * (4 + 12)  
+            },
+            {
+                title: 'Study for english class', 
+                completed: false, 
+                startTime: 60 * (5 + 12),
+                endTime: 60 * (6 + 12)  
+            },
         ],
         '01/14/2022': [
             {
@@ -76,30 +89,39 @@ const CalendarDisplay = () => {
                     nextLabel={<ChevronRightIcon className='w-5 h-5 mx-auto' />}
                 />
 
-                <div className='max-w-md w-full mx-auto'>
-                    {!events ?
-                        <div className='h-full p-2 border-2 border-dashed border-gray-300 rounded-lg inline-flex items-center justify-center flex-shrink-0 w-full'>
-                            <p className='text-gray-400 font-semibold'>No events today</p>
-                        </div>
-                        :
-                        <div>
-                            {events.map((event, idx) => (
-                                <div key={idx} className='w-full p-2 flex items-center justify-between border-b border-b-gray-300'>
-                                    <div className='flex items-center'>
-                                        <CheckCircleIcon className='w-5 h-5 mr-2' />
-                                        <div>
-                                            <p className='font-semibold text-sm'>{event.title}</p>
-                                            <p className='font-sembold text-sm text-gray-500'>{formatTime(event.startTime)} - {formatTime(event.endTime)}</p>
+                <div className='max-w-md w-full mx-auto overflow-y-auto oveerflow-x-hidden'>
+                    <AnimatePresence>
+                        {!events ?
+                            <div className='h-full p-2 border-2 border-dashed border-gray-300 rounded-lg inline-flex items-center justify-center flex-shrink-0 w-full'>
+                                <p className='text-gray-400 font-semibold'>No events today</p>
+                            </div>
+                            :
+                            <>
+                                {events.map((event, idx) => (
+                                    <motion.div 
+                                        key={idx} 
+                                        className='w-full p-2 flex items-center justify-between border-b border-b-gray-300'
+                                        initial={{opacity: 0, x: 5}}
+                                        animate={{opacity: 1, x: 0}}
+                                        transition={{duration: 0.2, delay: 0.1 + 0.1 * idx}}
+                                        exit={{opacity: 0, x: 5, transition: {duration: 0.2}}}
+                                    >
+                                        <div className='flex items-center'>
+                                            <CheckCircleIcon className='w-5 h-5 mr-2' />
+                                            <div>
+                                                <p className='font-semibold text-sm'>{event.title}</p>
+                                                <p className='font-sembold text-sm text-gray-500'>{formatTime(event.startTime)} - {formatTime(event.endTime)}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <button className='w-5 h-5'>
-                                        <TrashIcon className='w-5 h-5 text-gray-600' />
-                                    </button>
-                                </div>
-                               
-                            ))}
-                        </div>
-                    }
+                                        <button className='w-5 h-5'>
+                                            <TrashIcon className='w-5 h-5 text-gray-600' />
+                                        </button>
+                                    </motion.div>
+                                
+                                ))}
+                            </>
+                        }
+                    </AnimatePresence>
                 </div>
             </div>
         </div>
