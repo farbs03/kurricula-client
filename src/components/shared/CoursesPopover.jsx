@@ -21,13 +21,13 @@ export const courses = [
     {
         name: 'Tutoring',
         description: 'Chat with a tutor if you need any help with your courses',
-        href: '#',
+        href: '/tutoring',
         icon: ChatIcon,
     },
     { 
         name: 'Resources', 
         description: "Browse our curated list of resources for each course", 
-        href: '#', 
+        href: '/tutoring', 
         icon: SearchCircleIcon 
     },
     {

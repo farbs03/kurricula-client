@@ -3,14 +3,20 @@ import './App.css';
 import {Route, Routes} from "react-router-dom"
 
 import Navbar from './components/shared/Navbar';
+
 import Home from './views/Home/Home';
 import About from './views/About/About';
 import Blog from './views/Blog/Blog';
+
 import Courses from './views/Courses/Courses';
+import Course from './views/Courses/Course/Course';
+import Tutoring from './views/Tutoring/Tutoring'
+import Resources from './views/Resources/Resources'
+import Study from './views/Study/Study';
+
 import Login from './views/Login/Login';
 import Register from './views/Register/Register';
-import Course from './views/Courses/Course/Course';
-import Study from './views/Study/Study';
+
 
 
 function App() {
@@ -23,6 +29,8 @@ function App() {
           <Route path='/blog' element={<Blog />} />
           <Route path='/courses' element={<Courses />} />
           <Route path='/courses/:course' element={<Course />} />
+          <Route path='/tutoring' element={<Tutoring />} />
+          <Route path='/resources' element={<Resources />} />
           <Route path='/study' element={<Study />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />

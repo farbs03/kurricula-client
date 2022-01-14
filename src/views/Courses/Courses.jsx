@@ -5,6 +5,7 @@ import Rating from '../../components/Rating'
 import { AnimatePresence, motion } from 'framer-motion'
 import FilterCourses from './FilterCourses'
 import { isCompositeComponentWithType } from 'react-dom/cjs/react-dom-test-utils.development'
+import PaginateCourses from './PaginateCourses'
 
 const Courses = () => {
 
@@ -43,7 +44,6 @@ const Courses = () => {
                                         <motion.div
                                             className='rounded-xl drop-shadow-md hover:drop-shadow-xl transition duration-200 ease-in p-6 bg-white'
                                         >
-                                            
                                             <p className='font-bold font-lg mb-1 mr-2 line-clamp-1'>{getHighlightedText(course.title, search)}</p>
                                             {/*
                                             <div className='flex items-center -ml-1'>
