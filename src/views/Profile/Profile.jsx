@@ -81,13 +81,13 @@ const Profile = () => {
                     Edit Profile
                 </button>
 
-                <div className='flex items-center space-x-6 mb-2'>
-                    <p className='font-bold text-2xl'>Chris Farber</p>
-                    <div className='flex items-center space-x-2'>
+                <div className='md:flex md:items-center md:space-x-6 mb-2'>
+                    <p className='font-bold text-2xl md:mb-0 mb-2'>Chris Farber</p>
+                    <div className='flex items-center flex-wrap'>
                         {links.map((link) => (
                             <a 
                                 href={link.link} 
-                                className='font-semibold text-sm text-emerald-500 flex items-center'>
+                                className='font-semibold text-sm text-emerald-500 flex items-center m-1'>
                                     {link.icon} {link.title}
                             </a>
                         ))}

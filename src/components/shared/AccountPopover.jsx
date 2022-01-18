@@ -10,28 +10,13 @@ import {
     LogoutIcon
 } from '@heroicons/react/outline'
 
-import { ChevronDownIcon, UserCircleIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon, UserCircleIcon, UserIcon } from '@heroicons/react/solid'
 
-export const courses = [
+export const profileActions = [
     {
         name: 'Profile',
         href: '/profile',
-        icon: CollectionIcon,
-    },
-    {
-        name: 'Tutoring',
-        href: '/tutoring',
-        icon: ChatIcon,
-    },
-    { 
-        name: 'Resources', 
-        href: '/tutoring', 
-        icon: SearchCircleIcon 
-    },
-    {
-        name: 'Study',
-        href: '/study',
-        icon: CalendarIcon,
+        icon: UserIcon
     },
 ]
 
@@ -73,7 +58,7 @@ const AccountPopover = () => {
                     <Popover.Panel className="absolute z-10 mt-3 transform sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
                         <div className="rounded-lg drop-shadow-xl ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-4 bg-white px-6 py-4">
-                                {courses.map((item) => (
+                                {profileActions.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.href}
