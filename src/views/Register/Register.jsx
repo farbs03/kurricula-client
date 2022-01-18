@@ -4,7 +4,7 @@ import { CheckCircleIcon, EyeIcon, EyeOffIcon, XCircleIcon } from '@heroicons/re
 import Button from '../../components/Button'
 import {theme} from "../../theme"
 import Alert from '../../components/Alert'
-import { AcademicCapIcon } from '@heroicons/react/outline'
+import { AcademicCapIcon } from '@heroicons/react/solid'
 
 const PasswordVisibleButton = ({isVisible, onClick}) => {
     return (
@@ -72,10 +72,8 @@ const Register = () => {
     return (
         <div className='max-w-lg w-full mx-auto bg-white rounded-md p-6'>
             
-            <div className='block w-12 h-12 mx-auto mb-2'>
-                <div className='w-12 h-12 border-4 inline-flex border-emerald-500 items-center justify-center flex-shrink-0 rounded-full'>
-                    <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
-                </div>
+            <div className='block w-10 h-10 mx-auto mb-2'>
+                <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
             </div>
 
             <p className='font-bold text-xl text-center mb-4'>Register</p>
@@ -141,7 +139,6 @@ const Register = () => {
                             }
                             <p className='text-sm text-gray-600 font-semibold'>Username has at least 5 characters</p>
                         </div>
-                        
                     </div>
                     <div>
                         <p className='text-sm font-semibold'>Password</p>
@@ -183,8 +180,7 @@ const Register = () => {
                         Register
                     </Button>
                 }
-                
-
+                <p className='my-2 text-gray-500 text-center text-sm'>Already have an account? <a href='/login' className='text-emerald-500'>Sign in</a> </p>
             </div>
             {alert &&
                 <Alert duration={1200} open={true} variant={alertType}>

@@ -17,6 +17,8 @@ import Study from './views/Study/Study';
 import Login from './views/Login/Login';
 import Register from './views/Register/Register';
 
+import Profile from './views/Profile/Profile';
+
 
 
 function App() {
@@ -34,6 +36,7 @@ function App() {
           <Route path='/study' element={<Study />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/profile' element={<Profile />} />
           <Route path='/' element={<Home />} />
         </Routes>
       </Navbar>

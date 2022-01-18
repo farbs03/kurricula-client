@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
-import { MenuIcon } from '@heroicons/react/solid'
+import { MenuIcon, UserCircleIcon } from '@heroicons/react/solid'
 import { theme } from '../../theme'
 import Button from '../Button'
 import CoursesPopover, {courses} from './CoursesPopover'
 import Drawer from './Drawer'
 import { AcademicCapIcon } from '@heroicons/react/outline'
+import { Popover } from "@headlessui/react"
+import AccountPopover from './AccountPopover'
 
 const Navbar = (props) => {
 
@@ -15,6 +17,8 @@ const Navbar = (props) => {
     ]
 
     const [drawerOpen, setDrawerOpen] = useState(false)
+
+    let userData = JSON.parse(localStorage.getItem("userInfo"))
 
     return (
         <div>
@@ -47,12 +51,24 @@ const Navbar = (props) => {
                     </div>
 
                     <div className='px-2 space-x-3 hidden md:flex items-center'>
-                        <a href="/login">
-                            <Button>Login</Button>
-                        </a>
-                        <a href="/register">
-                            <Button variant="primary">Register</Button>
-                        </a>
+                        {userData ?
+                            <>
+                                <a href="/register">
+                                    <Button variant="primary">Register</Button>
+                                </a>
+                                <AccountPopover />
+                            </>
+                            :
+                            <>
+                                <a href="/login">
+                                    <Button>Login</Button>
+                                </a>
+                                <a href="/register">
+                                    <Button variant="primary">Register</Button>
+                                </a>
+                            </>
+                        }
+
                     </div>
 
                     <div className='block md:hidden'>

@@ -72,6 +72,7 @@ const CalendarDisplay = () => {
                     prev2Label={null}
                     prevLabel={<ChevronLeftIcon className='w-5 h-5 mx-auto' />}
                     nextLabel={<ChevronRightIcon className='w-5 h-5 mx-auto' />}
+                    
                 />
 
                 <div className='w-full md:max-w-lg mx-auto overflow-y-auto overflow-x-hidden'>
