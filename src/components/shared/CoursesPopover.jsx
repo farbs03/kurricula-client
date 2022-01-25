@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/outline'
 
 import { ChevronDownIcon } from '@heroicons/react/solid'
+import { NavLink } from 'react-router-dom'
 
 export const courses = [
     {
@@ -78,9 +79,9 @@ const CoursesPopover = () => {
                         <div className="rounded-lg drop-shadow-xl ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                 {courses.map((item) => (
-                                <a
+                                <NavLink
                                     key={item.name}
-                                    href={item.href}
+                                    to={item.href}
                                     className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 transition ease-in duration-200"
                                 >
                                     <item.icon className="flex-shrink-0 h-6 w-6 text-emerald-500" aria-hidden="true" />
@@ -88,7 +89,7 @@ const CoursesPopover = () => {
                                         <p className="text-base font-medium">{item.name}</p>
                                         <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                     </div>
-                                </a>
+                                </NavLink>
                                 ))}
                             </div>
                         </div>

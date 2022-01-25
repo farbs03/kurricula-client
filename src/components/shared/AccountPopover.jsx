@@ -11,6 +11,7 @@ import {
 } from '@heroicons/react/outline'
 
 import { ChevronDownIcon, UserCircleIcon, UserIcon } from '@heroicons/react/solid'
+import { NavLink } from 'react-router-dom'
 
 export const profileActions = [
     {
@@ -59,13 +60,13 @@ const AccountPopover = () => {
                         <div className="rounded-lg drop-shadow-xl ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-4 bg-white px-6 py-4">
                                 {profileActions.map((item) => (
-                                    <a
+                                    <NavLink
                                         key={item.name}
-                                        href={item.href}
+                                        to={item.href}
                                         className="text-gray-500 hover:text-[#0d0d0d] text-sm transition ease-in duration-200 font-medium"
                                     >
                                         {item.name}
-                                    </a>
+                                    </NavLink>
                                 ))}
                                 <button
                                     className="text-rose-400 hover:text-rose-500 flex items-center text-sm transition ease-in duration-200 font-medium"

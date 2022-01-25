@@ -62,7 +62,7 @@ const Login = () => {
     }
 
     return (
-        <div className='max-w-lg w-full mx-auto bg-white rounded-md p-6'>
+        <div className='max-w-lg w-full mx-auto bg-white rounded-md p-6 mt-4'>
             
             <div className='block w-10 h-10 mx-auto mb-2'>
                 <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
@@ -72,10 +72,10 @@ const Login = () => {
             <div>
 
                 <div className='my-2'>
-                        <span className='font-semibold text-gray-600 text-sm'>
-                            Email or username
-                            <input type="text" id='email-or-username' className={theme.textfield} value={userInfo} onChange={(e) => setUserInfo(e.target.value)}  />
-                        </span>
+                    <span className='font-semibold text-gray-600 text-sm'>
+                        Email or username
+                        <input type="text" id='email-or-username' className={theme.textfield} value={userInfo} onChange={(e) => setUserInfo(e.target.value)}  />
+                    </span>
                 </div>
 
                 <div className='my-2'>

@@ -68,11 +68,13 @@ const Profile = () => {
                     <div className='p-1 z-0 inline-flex items-center justify-center flex-shrink-0 w-32 h-32 rounded-full bg-gradient-to-tr from-emerald-400 to-indigo-500 drop-shadow-xl'>
                         <img src={profile} className='w-full h-full rounded-full object-cover' />
                     </div>
+                    {/* 
                     <button
                         className='w-6 h-6 p-1 z-10 bg-gray-200 hover:bg-gray-300 active:bg-gray-400 transition duration-200 ease-in rounded-full inline-flex items-center justify-center flex-shrink-0'
                     >
                         <UploadIcon className='w-5 h-5 text-gray-700' />
-                    </button>  
+                    </button>
+                    */}  
                 </div>
 
                 <button

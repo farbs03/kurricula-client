@@ -26,7 +26,7 @@ const Courses = () => {
 
     return (
         <div>
-            <p className='text-2xl font-bold mb-6'>Courses</p>
+            <p className='text-2xl font-bold mb-4'>Courses</p>
             <div className='flex max-w-7xl w-full mx-auto justify-center'>
                 <FilterCourses filterCourses={filterCourses} />
                 <div className='w-full md:ml-6 ml-0'>

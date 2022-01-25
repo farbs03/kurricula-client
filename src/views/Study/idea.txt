@@ -1,0 +1,3 @@
+have point system where if user is able to study for x amount of time, they get rewarded x amount of points
+- these points can be used to purchase tutoring hours, unlock special themes, etc.
+- this website will NOT include any sort of payments, we're better than that smh
