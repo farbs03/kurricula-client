@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {CheckCircleIcon, ChevronLeftIcon, ChevronRightIcon, MenuIcon, TrashIcon} from "@heroicons/react/solid"
 import { CheckIcon } from '@heroicons/react/outline'
+import { motion } from 'framer-motion'
 
 const Event = ({event}) => {
 
@@ -27,19 +28,17 @@ const Event = ({event}) => {
     return (
         <>
             <div className='flex items-center'>
-
-                {checked ?
-                    <button 
-                        onClick={() => setChecked(!checked)} 
-                        className='w-6 h-6 p-0 text-center inline-flex justify-center items-center mr-2 transition duration-200 ease-in'
-                    >
-                        <CheckCircleIcon className='w-6 h-6 text-white bg-emerald-500 rounded-full' />
-                    </button>
-                    :
-                    <button onClick={() => setChecked(!checked)} className='w-6 h-6 mr-2 border border-gray-300 rounded-full transition duration-200 ease-in'>
-                    </button>
-                }
-                
+                    {checked ?
+                        <button 
+                            onClick={() => setChecked(!checked)} 
+                            className='w-6 h-6 p-0 text-center inline-flex justify-center items-center mr-2 transition duration-200 ease-in'
+                        >
+                            
+                            <CheckCircleIcon className='w-6 h-6 text-white bg-emerald-500 rounded-full' />
+                        </button>
+                        :
+                        <button onClick={() => setChecked(!checked)} className='w-6 h-6 mr-2 border border-gray-300 rounded-full transition duration-200 ease-in' />
+                    }
                 <div>
                     <p className='font-semibold text-sm'>{event.title}</p>
                     <p className='font-sembold text-sm text-gray-500'>{formatTime(event.startTime)} - {formatTime(event.endTime)}</p>
