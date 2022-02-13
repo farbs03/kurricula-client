@@ -5,7 +5,12 @@ const Button = ({children, style, onClick, variant}) => {
 
     let type = theme.button
     if(variant !== 'primary') {
-        type = theme.plainButton
+        if(variant == 'outlined') {
+            type = theme.outlinedButton
+        }
+        else {
+            type = theme.plainButton
+        }
     }
 
     return (

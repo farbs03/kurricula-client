@@ -5,14 +5,15 @@ import Button from '../../components/Button'
 import {theme} from "../../theme"
 import Alert from '../../components/Alert'
 import { AcademicCapIcon } from '@heroicons/react/solid'
+import { NavLink } from 'react-router-dom'
 
 const PasswordVisibleButton = ({isVisible, onClick}) => {
     return (
         <button className='w-5 h-5' onClick={onClick}>
             {isVisible ? 
-                <EyeIcon className="w-5 h-5 text-gray-700" />
+                <EyeIcon className="w-5 h-5 text-gray-700 dark:text-gray-400" />
                 :
-                <EyeOffIcon className="w-5 h-5 text-gray-700" />
+                <EyeOffIcon className="w-5 h-5 text-gray-700 dark:text-gray-400" />
             }
         </button>
     )
@@ -62,7 +63,7 @@ const Login = () => {
     }
 
     return (
-        <div className='max-w-lg w-full mx-auto bg-white rounded-md p-6 mt-4'>
+        <div className='max-w-lg w-full mx-auto bg-white dark:bg-gray-800 rounded-md p-6 mt-4'>
             
             <div className='block w-10 h-10 mx-auto mb-2'>
                 <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
@@ -72,14 +73,14 @@ const Login = () => {
             <div>
 
                 <div className='my-2'>
-                    <span className='font-semibold text-gray-600 text-sm'>
+                    <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
                         Email or username
                         <input type="text" id='email-or-username' className={theme.textfield} value={userInfo} onChange={(e) => setUserInfo(e.target.value)}  />
                     </span>
                 </div>
 
                 <div className='my-2'>
-                    <span className='font-semibold text-gray-600 text-sm'>
+                    <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
                         Password
                         <div className='flex items-center space-x-1'>
                             <input type={passwordVisible ? 'text' : 'password'} className={theme.textfield} value={password} onChange={(e) => setPassword(e.target.value)} />
@@ -89,7 +90,7 @@ const Login = () => {
                 </div>
 
                 <div className='mt-4 flex align-center'>
-                    <label htmlFor='remember' className='flex align-center text-gray-500 text-sm'>
+                    <label htmlFor='remember' className='flex align-center text-gray-500 dark:text-gray-400 text-sm'>
                         <input 
                             id='remember'
                             type="checkbox" 
@@ -103,9 +104,9 @@ const Login = () => {
                 </div>
                 
                 {loading ?
-                    <button disabled className='w-full mt-4 flex justify-center items-center text-center disabled text-white font-semibold bg-emerald-700 rounded-md px-4 py-2'>
+                    <button disabled className='w-full mt-4 flex justify-center items-center text-center disabled text-gray-100 font-semibold bg-emerald-700 rounded-md px-4 py-2'>
                         <svg 
-                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" 
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-100" 
                             xmlns="http://www.w3.org/2000/svg" 
                             fill="none" 
                             viewBox="0 0 24 24"
@@ -121,7 +122,7 @@ const Login = () => {
                     </Button>
                 }
                 
-                <p className='my-2 text-gray-500 text-center text-sm'>Need an account? <a href='/register' className='text-emerald-500'>Sign up today</a> </p>
+                <p className='my-2 text-gray-500 dark:text-gray-400 text-center text-sm'>Need an account? <NavLink to='/register' className='text-emerald-500'>Sign up today</NavLink> </p>
 
             </div>
             {alert &&

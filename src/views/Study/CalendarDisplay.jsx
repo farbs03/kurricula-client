@@ -52,7 +52,7 @@ const CalendarDisplay = () => {
                     />
                 </div>
 
-                <div className='max-w-lg max-h-fit w-full overflow-y-auto overflow-x-hidden drop-shadow-lg rounded-xl bg-white p-4'>
+                <div className='max-w-lg max-h-fit w-full overflow-y-auto overflow-x-hidden drop-shadow-xl rounded-xl bg-white p-4'>
                     <div className="max-h-auto">
                         <div className="flex items-center space-x-1 mb-2">
                             <p className='font-semibold text-lg'>Events</p>
