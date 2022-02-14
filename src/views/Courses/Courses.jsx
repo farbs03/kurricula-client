@@ -43,7 +43,7 @@ const Courses = () => {
                                 >
                                     <NavLink to={`/courses/${course.href}`}>
                                         <motion.div
-                                            className='rounded-xl drop-shadow-md dark:drop-shadow-none hover:drop-shadow-xl dark:hover:drop-shadow-none transition duration-200 ease-in p-6 bg-white dark:bg-gray-900 dark:ring-2 dark:ring-gray-800 dark:hover:ring-emerald-500'
+                                            className='rounded-xl drop-shadow-md dark:drop-shadow-none hover:drop-shadow-xl dark:hover:drop-shadow-none transition duration-200 ease-in p-6 bg-white dark:bg-gray-900 dark:ring-2 dark:ring-gray-500 dark:hover:ring-emerald-500'
                                         >
                                             <p className='font-semibold font-lg mb-1 mr-2 line-clamp-1'>{getHighlightedText(course.title, search)}</p>
                                             {/*
