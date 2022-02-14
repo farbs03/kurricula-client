@@ -19,7 +19,7 @@ const PhoneDisplay = () => {
 
                 <div className='p-2 bg-gray-900'>
                     <div className='bg-gray-100 dark:bg-gray-700 p-2 h-[384px]'>
-                        
+                        {/* todo: add actual content here */}
                     </div>
                 </div>
 

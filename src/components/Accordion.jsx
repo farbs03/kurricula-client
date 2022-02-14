@@ -6,7 +6,7 @@ const Accordion = ({title, children}) => {
     <Disclosure>
       {({ open }) => (
         <>
-          <Disclosure.Button className="flex justify-between w-full my-1 px-4 py-2 text-sm font-medium text-left transition duration-200 ease-in text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">
+          <Disclosure.Button className="flex justify-between w-full my-1 px-4 py-2 text-sm font-medium text-left transition duration-200 ease-in text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">
             <span>{title}</span>
             <ChevronUpIcon
               className={`${
@@ -23,7 +23,7 @@ const Accordion = ({title, children}) => {
             leaveFrom="transform scale-100 opacity-100"
             leaveTo="transform scale-95 opacity-0"
           >
-            <Disclosure.Panel className="px-4 pt-2 text-sm text-gray-500">{children}</Disclosure.Panel>
+            <Disclosure.Panel className="px-4 pt-2 text-sm text-gray-500 dark:text-gray-400">{children}</Disclosure.Panel>
           </Transition>
         </>
       )}

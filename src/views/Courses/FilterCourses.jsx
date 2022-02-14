@@ -17,10 +17,10 @@ const FilterCourses = ({filterCourses}) => {
             initial={{y: 10, opacity: 0, scale: 0.8}}
             animate={{y: 0, opacity: 1, scale: 1}}
             transition={{duration: 0.4}}
-            className='bg-white dark:bg-gray-700 rounded-lg p-6 hidden md:block md:max-w-xs md:w-full max-h-fit h-full'
+            className='bg-white dark:bg-gray-800 rounded-lg p-6 hidden md:block md:max-w-xs md:w-full max-h-fit h-full'
         >
             
-            <label className="relative text-gray-400 focus-within:text-gray-600 dark:focus-within:text-gray-200 block transition-duration-200 ease-in">
+            <label className="relative text-gray-400 focus-within:text-gray-700 dark:focus-within:text-gray-200 block transition-duration-200 ease-in">
                 <SearchIcon className='w-5 h-5 pointer-events-none absolute top-1/2 transform -translate-y-1/2 left-2' fill='currentColor' />
                 <input 
                     type="text" 
@@ -56,7 +56,7 @@ const FilterCourses = ({filterCourses}) => {
 
             <div className="flex justify-between items-center mb-2">
                 <p className='font-semibold text-md'>Filter</p>
-                <button className='bg-gray-100 dark:bg-gray-600 rounded-md font-semibold px-2 py-1 text-sm transition duration-200 ease-in hover:bg-gray-200 dark:hover:bg-gray-700'>
+                <button className='bg-gray-100 dark:bg-gray-700 rounded-md font-semibold px-2 py-1 text-sm transition duration-200 ease-in hover:bg-gray-200 dark:hover:bg-gray-700'>
                     Reset Filters
                 </button>
             </div>

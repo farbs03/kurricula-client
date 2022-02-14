@@ -4,27 +4,29 @@ import { Disclosure, Transition } from '@headlessui/react'
 
 const Faq = () => {
 
+    //todo: add actual q&a's
+
     const questions = [
         {
-            question: "What about 'Rate My Professor'?",
+            question: "What about Rate My Professor?",
             answer: "Idk, try the website out for yourself"
         },
         {
-            question: "What about 'Rate My Professor'?",
+            question: "What about Reddit?",
             answer: "Idk, try the website out for yourself"
         },
         {
-            question: "What about 'Rate My Professor'?",
+            question: "What about Incentiva?",
             answer: "Idk, try the website out for yourself"
         },
         {
-            question: "What about 'Rate My Professor'?",
+            question: "What about Instagram?",
             answer: "Idk, try the website out for yourself"
         },
     ]
 
     return (
-        <div className='my-12'>
+        <div className='my-20'>
             <p className='font-bold text-3xl text-center mb-8'>FAQ</p>
             <div className='max-w-xl w-full mx-auto divide-y divide-gray-200 dark:divide-gray-800'>
                 {questions.map((question, idx) => (

@@ -37,13 +37,13 @@ const CalendarDisplay = () => {
                     <p className='font-bold text-lg'>Calendar</p>
                 </div>
                 */}
-                <div className='drop-shadow-xl rounded-lg bg-white w-fit p-2 md:mx-0 mx-auto'>
+                <div className='drop-shadow-xl rounded-lg bg-white dark:bg-gray-800 w-fit p-2 md:mx-0 mx-auto'>
                     <Calendar
                         onChange={setDate}
                         value={date}
                         view="month"
                         tileClassName='transition duration-100 ease-in rounded-full font-medium'
-                        className='text-gray-700 text-sm mx-auto'
+                        className='text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 text-sm mx-auto'
                         next2Label={null}
                         prev2Label={null}
                         prevLabel={<ChevronLeftIcon className='w-5 h-5 mx-auto' />}
@@ -52,11 +52,11 @@ const CalendarDisplay = () => {
                     />
                 </div>
 
-                <div className='max-w-lg max-h-fit w-full overflow-y-auto overflow-x-hidden drop-shadow-xl rounded-xl bg-white p-4'>
+                <div className='max-w-lg max-h-fit w-full overflow-y-auto overflow-x-hidden drop-shadow-xl rounded-xl bg-white dark:bg-gray-800 p-4'>
                     <div className="max-h-auto">
                         <div className="flex items-center space-x-1 mb-2">
                             <p className='font-semibold text-lg'>Events</p>
-                            <button onClick={() => setEventPrompt(!eventPrompt)} className='w-6 h-6 inline-flex flex-shrink-0 items-center justify-center rounded-md hover:bg-gray-100 transition duration-200 ease-in'><PlusIcon className='text-emerald-500 w-5 h-5' /></button>
+                            <button onClick={() => setEventPrompt(!eventPrompt)} className='w-6 h-6 inline-flex flex-shrink-0 items-center justify-center rounded-md transition duration-200 ease-in'><PlusIcon className='text-emerald-500 w-5 h-5' /></button>
                         </div>
                         {!events && !eventPrompt ?
                             <motion.div 

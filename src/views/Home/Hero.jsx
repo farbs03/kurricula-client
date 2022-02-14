@@ -6,9 +6,9 @@ import PhoneDisplay from './PhoneDisplay'
 const Hero = () => {
 
     return (
-        <div className='my-12'>
+        <div className='my-20'>
             <motion.div
-                className='flex flex-wrap gap-4 justify-between items-center h-full'
+                className='flex flex-wrap gap-4 justify-center md:justify-between items-center h-full'
             >
                 <motion.div
                     initial={{y: 20, opacity: 0}}

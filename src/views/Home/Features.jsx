@@ -4,6 +4,8 @@ import { theme } from '../../theme'
 
 const Features = () => {
 
+    //todo: add pictures of each feature from website and display features w/ pictures and alternate pattern (iykyk)
+
     const features = [
         {
             title: "Rate Courses",
@@ -28,7 +30,7 @@ const Features = () => {
     ]
 
     return (
-        <div className="my-12">
+        <div className="my-20">
             <p className="font-bold text-3xl text-center mb-8">Features</p>
             <div className='grid md:grid-cols-2 justify-between w-fit mx-auto gap-12'>
                 {features.map((feature) => (
