@@ -14,7 +14,7 @@ const Hero = () => {
                     initial={{y: 20, opacity: 0}}
                     animate={{y: 0, opacity: 1}}
                     transition={{duration: 0.4, delay: 0.2}}
-                    className='max-w-3xl'
+                    className='max-w-2xl'
                 >
                     <p className='text-5xl md:text-5xl font-bold text-center md:text-left'>
                         Social media and productivity website
@@ -22,12 +22,12 @@ const Hero = () => {
                     </p>
                     <motion.div
                         initial={{opacity: 0, scale: 0}}
-                        animate={{opacity: 1, scale: 1}}
+                        animate={{opacity: 1, scale: 1}}                        
                         transition={{duration: 0.4, delay: 0.6}}
-                        className='w-fit mt-6 mb-2 md:mb-0 mx-auto md:mx-0'
+                        className='w-fit mt-6 mb-2 md:mb-0 mx-auto md:mx-0 p-1 rounded-lg bg-gradient-to-tr from-emerald-400 to-cyan-400'
                     >
                         <motion.button
-                            className={`${theme.gradientButton} md:${theme.largeGradientButton}`}
+                            className={`bg-gray-900 rounded-md font-semibold px-4 md:px-6 py-2 md:py-3`}
                         >
                             View Features
                         </motion.button>

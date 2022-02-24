@@ -14,15 +14,15 @@ import { NavLink } from 'react-router-dom'
 
 export const courses = [
     {
-        name: 'Courses',
+        name: 'Rate Courses',
         description: 'See a list of all courses and their reviews',
         href: '/courses',
         icon: CollectionIcon,
     },
     {
-        name: 'Tutoring',
-        description: 'Chat with a tutor if you need any help with your courses',
-        href: '/tutoring',
+        name: 'Chat',
+        description: 'Receive or provide help for coursework by chatting with others',
+        href: '/chat',
         icon: ChatIcon,
     },
     { 

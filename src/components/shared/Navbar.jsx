@@ -60,7 +60,7 @@ const Navbar = (props) => {
     }
 
     return (
-        <div className='text-gray-900 dark:text-gray-100 dark:bg-gray-900 min-h-screen'>
+        <div className='text-gray-900 dark:text-gray-100 dark:bg-gray-900 min-h-screen flex flex-col'>
             <div className="bg-white dark:bg-gray-800">
                 <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <NavLink to="/">
@@ -149,7 +149,7 @@ const Navbar = (props) => {
                     
                 </div> 
             </div>
-            <div className='max-w-7xl mx-auto w-full justify-center p-4'>
+            <div className='max-w-7xl mx-auto w-full justify-center p-4 flex-grow inline-flex flex-shrink-0 items-center'>
                 {props.children}
             </div>
         </div>

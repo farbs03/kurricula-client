@@ -31,7 +31,7 @@ const FilterCourses = ({filterCourses}) => {
                         flex-1 
                         appearance-none 
                         border 
-                        border-gray-300 dark:border-gray-500
+                        border-gray-300 dark:border-gray-600
                         w-full 
                         block 
                         pr-2
@@ -43,7 +43,7 @@ const FilterCourses = ({filterCourses}) => {
                         focus:ring-1 
                         focus:ring-gray-900 dark:focus:ring-gray-100
                         focus:border-transparent
-                        bg-gray-100
+                        bg-gray-100 dark:bg-gray-700
                         mb-4
                         text-sm
                         text-gray-900 dark:text-gray-100                            
