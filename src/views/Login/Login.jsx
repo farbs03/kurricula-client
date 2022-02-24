@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom'
 
 const PasswordVisibleButton = ({isVisible, onClick}) => {
     return (
-        <button className='w-5 h-5' onClick={onClick}>
+        <button className='w-5 h-5 absolute right-2 z-10' onClick={onClick}>
             {isVisible ? 
                 <EyeIcon className="w-5 h-5 text-gray-700 dark:text-gray-400" />
                 :
@@ -18,7 +18,6 @@ const PasswordVisibleButton = ({isVisible, onClick}) => {
         </button>
     )
 }
-
 
 const Login = () => {
 
@@ -63,14 +62,14 @@ const Login = () => {
     }
 
     return (
-        <div className='max-w-lg w-full mx-auto bg-white dark:bg-gray-800 rounded-md p-6 mt-4'>
+        <div className='max-w-lg w-full mx-auto bg-white dark:bg-gray-800 rounded-lg p-6 mt-4'>
             
             <div className='block w-10 h-10 mx-auto mb-2'>
                 <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
             </div>
 
             <p className='font-bold text-xl text-center mb-4'>Sign In</p>
-            <div>
+            <div className='max-w-sm w-full mx-auto'>
 
                 <div className='my-2'>
                     <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
@@ -79,11 +78,17 @@ const Login = () => {
                     </span>
                 </div>
 
-                <div className='my-2'>
+                <div className='mt-2'>
                     <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
                         Password
-                        <div className='flex items-center space-x-1'>
-                            <input type={passwordVisible ? 'text' : 'password'} className={theme.textfield} value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <div className='flex items-center relative'>
+                            <input
+                                style={{width: "100%", zIndex: '0', paddingRight: "30px"}}
+                                type={passwordVisible ? 'text' : 'password'} 
+                                className={theme.textfield} 
+                                value={password} 
+                                onChange={(e) => setPassword(e.target.value)} 
+                            />
                             <PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />
                         </div>
                     </span>

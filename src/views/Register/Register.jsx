@@ -7,6 +7,10 @@ import Alert from '../../components/Alert'
 import { AcademicCapIcon } from '@heroicons/react/solid'
 import { NavLink } from 'react-router-dom'
 
+import {schoolList} from '../../schoolList'
+
+import Dropdown from '../../components/Dropdown'
+
 const PasswordVisibleButton = ({isVisible, onClick}) => {
     return (
         <button className='w-5 h-5 absolute right-2 z-10' onClick={onClick}>
@@ -23,7 +27,11 @@ const PasswordVisibleButton = ({isVisible, onClick}) => {
 const Register = () => {
 
     const [email, setEmail] = useState('')
+
     const [userName, setUsername] = useState('')
+
+    const [school, setSchool] = useState()
+    const [query, setQuery] = useState('')
 
     const [password, setPassword] = useState('')
     const [passwordVisible, setPasswordVisible] = useState(false)
@@ -38,8 +46,9 @@ const Register = () => {
         
         let validEmail = email.length >= 3
         let validUserName = userName.length >= 5
+        let validSchool = schoolList.indexOf(school) !== -1
         let validPassword = password.length >= 12
-        let valid = validEmail && validUserName && validPassword
+        let valid = validEmail && validUserName && validSchool && validPassword
 
         if(valid) {
             setAlert(true)
@@ -48,6 +57,7 @@ const Register = () => {
             const data = {
                 email: email,
                 userName: userName,
+                school: school,
                 password: password
             }
             localStorage.setItem('userInfo', JSON.stringify(data))
@@ -68,7 +78,7 @@ const Register = () => {
     }
 
     return (
-        <div className='max-w-lg w-full mx-auto bg-white dark:bg-gray-800 rounded-md p-6 mt-4'>
+        <div className='max-w-lg w-full mx-auto bg-white dark:bg-gray-800 rounded-lg p-6 mt-4'>
             
             <div className='block w-10 h-10 mx-auto mb-2'>
                 <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
@@ -91,20 +101,33 @@ const Register = () => {
                     </span>
                 </div>
 
-                <div className='mt-2 mb-8'>
-                    <p className='font-semibold text-gray-500 dark:text-gray-400 text-sm mb-6'>
-                        Password
-                    </p>
-                    <div className='flex items-center space-x-1 relative'>
-                        <input
-                            style={{position: "absolute", width: "100%", zIndex: '0', paddingRight: "30px"}}
-                            type={passwordVisible ? 'text' : 'password'} 
-                            className={theme.textfield} 
-                            value={password} 
-                            onChange={(e) => setPassword(e.target.value)} 
+                <div className="my-2">
+                    <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                        School
+                        <Dropdown 
+                            data={schoolList}
+                            query={query}
+                            setQuery={setQuery}
+                            selected={school}
+                            setSelected={setSchool}
                         />
-                        <PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />
-                    </div>
+                    </span>
+                </div>
+
+                <div className='mt-2 mb-8'>
+                    <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                        Password
+                        <div className='flex items-center relative'>
+                            <input
+                                style={{width: "100%", zIndex: '0', paddingRight: "30px"}}
+                                type={passwordVisible ? 'text' : 'password'} 
+                                className={theme.textfield} 
+                                value={password} 
+                                onChange={(e) => setPassword(e.target.value)} 
+                            />
+                            <PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />
+                        </div>
+                    </span>
                 </div>
                 
 
