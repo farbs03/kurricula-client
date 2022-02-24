@@ -1,0 +1,61 @@
+User
+    Account
+        Username, Email, Password, Profile Picture, Bio Info, Friend List
+    Courses
+        Ratings for course, comments for course discussions, interactions in comment section, favorited posts?
+    Chat
+        All message logs with friends, new chat requests (?), timestamps for each message, 
+    Events
+        Storage of user’s studying plans for each day, including title, timeframe, and completed or not.
+
+fuck me why did i have to be so extra with this project
+
+Mock Account Data Structure:
+
+{
+	username: "farbs03",
+    id: "43829q7ryuihjewkfkdlsr89327q489o3yuhwjkaflweadk" //you get the idea
+    email: "cgeraldfarber@icloud.com",
+    password: "KungFuKenny",
+    profilePicture: "https://storage.googleapis.com/...", //idek what we’re gonna use for this,
+    bio: {
+        description: "Kung Fu Kenny he was born with a vision...",
+        backgroundPic: "https://...",
+        links: [{...}],
+        tags: [{...}],
+        friends: ["brandini101", "zanesta", "chessgal", "ezlikespie"]
+    },
+    posts: [{...}],
+    comments: [{...}],
+    chats: {
+        "brandini101": [
+            {
+                from: "them",
+                message: "get ratioed bozo + ur white",
+                time: "2:43 PM" //will be actual time stamp,
+            },
+            {
+                from: "you",
+                message: "counter ratio + u watch anime",
+                time: "2:56 PM"
+            },
+        ],
+        "zanesta": [
+            ...
+        ],
+        ...
+    },
+    events: {
+        "2/14/2022": [
+            {
+                title: "Get stuff done",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM",
+                completed: false
+            },
+            ...
+        ],
+        ...,
+    }
+
+}

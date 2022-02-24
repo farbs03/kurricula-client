@@ -2,27 +2,29 @@ import React, {useState, useEffect, useRef} from "react"
 import {motion} from "framer-motion"
 import {ArrowCircleUpIcon} from "@heroicons/react/solid"
 import "./chat.css"
-import squidward from '../../assets/squidward.jpg'
+import {fakeUser} from "../../fakeUser"
+import squidward from "../../assets/squidward.jpg"
 
-localStorage.setItem("messages", JSON.stringify(
-    [
-        {text: 'hi how are you', person: 'brandini101'},
-    ]
-))
+const OnlineStatus = () => {
+    return (
+        <div class="flex h-4 w-4 absolute -bottom-3 -right-2">
+            <span class="animate-ping absolute h-2 w-2 -top-1 -left-1 rounded-full bg-green-500 opacity-75" />
+            <span class="relative rounded-full h-2 w-2 -top-1 -left-1 bg-green-500" />
+        </div>
+    )
+}
 
-const Chat = () => {
+const ChatInterface = ({friendName}) => {
 
-    var currMessages = JSON.parse(localStorage.getItem('messages'))
+    let currMessages = fakeUser.chats[friendName]
+    console.log(currMessages)
 
     const [message, setMessage] = useState('')
 
     const sendMessage = (e) => {
         e.preventDefault()
         if(message !== "") {
-            var currUserMessages = JSON.parse(localStorage.getItem("messages"));
-            currUserMessages.push({text: message, person: currMessages.length % 2 !== 0 ? "farbs03" : "brandini101"})
             setMessage("")
-            localStorage.setItem("messages", JSON.stringify(currUserMessages))
         }
     }
 
@@ -50,27 +52,27 @@ const Chat = () => {
     }
 
     return (
-        <div className='max-w-md w-full mx-auto rounded-lg drop-shadow-xl bg-white'>
-            <div className='p-2 border-b border-b-gray-200 flex-col justify-center'>
-                <div className='flex'>
-                    {/* don't feel like making this work :(
-                    <span class="flex h-3 w-3 flex-grow-0">
-                        <span class="animate-ping inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
-                    </span>
-                    */}
-                    
-                    <img src={squidward} className='w-10 h-10 rounded-full mx-auto border-2 border-green-500 shadow-md' />
+        <div className='flex-grow bg-white dark:bg-gray-800'>
+            <div className='p-4 border-b border-b-gray-200 dark:border-b-gray-700'>
+                
+                <div className="flex items-center gap-4 w-fit mr-auto">
+
+                    <div className='w-10 h-10 mx-auto relative'>
+                        <OnlineStatus />
+                        <img src={squidward} className='w-10 h-10 rounded-full shadow-md' />
+                    </div>
+
+                    <p className='font-semibold'>{friendName}</p>
                 </div>
-                <p className='font-semibold text-center text-xs'>brandini101</p>
+                
             </div>
             <div ref={messageEl} className='h-96 overflow-y-auto'>
-                <div className='space-y-2 grid grid-cols-1 p-4'>
-                    {currMessages && currMessages.map((message, idx) => (
+                <div className='space-y-4 grid grid-cols-1 p-4'>
+                    {currMessages.map((message, idx) => (
                         <div
                             className={
                                 classNames(
-                                    message.person === "farbs03" ? 
+                                    message.from === "you" ? 
                                     "place-self-end text-right" 
                                     : 
                                     "place-self-start text-left",
@@ -84,17 +86,17 @@ const Chat = () => {
                                 transition={{duration: 0.2}} 
                                 className={
                                     classNames(
-                                        message.person === "farbs03" ? 
+                                        message.from === "you" ? 
                                         "bg-emerald-500 text-white rounded-br-none" 
                                         : 
-                                        "bg-gray-200 text-black rounded-tl-none",
+                                        "bg-gray-200 dark:bg-gray-600 text-black dark:text-gray-100 rounded-tl-none",
 
                                         'rounded-2xl px-4 py-2'
                                     )
                                     
                                 }
                             >
-                                {message.text}
+                                {message.message}
                             </motion.div>
                         </div>
                     ))}
@@ -103,14 +105,14 @@ const Chat = () => {
             </div>
             
             {/* area for textfield for message */}
-            <div className="border-t border-t-gray-200 p-2">
+            <div className="border-t border-t-gray-200 dark:border-t-gray-700 p-2">
                 <form onSubmit={sendMessage} className='flex items-center'>
                     <input 
                         type='text' 
                         value={message} 
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder='Send a message'
-                        className='p-2 focus:ring-0 w-full border-transparent focus:border-transparent bg-white'
+                        className='p-2 focus:ring-0 w-full border-transparent focus:border-transparent bg-white dark:bg-gray-800'
                         onKeyPress={handleKeypress}
                     />
                     <button className='w-6 h-6' onClick={sendMessage}>
@@ -123,4 +125,4 @@ const Chat = () => {
         </div>
     )
 }
-export default Chat
+export default ChatInterface

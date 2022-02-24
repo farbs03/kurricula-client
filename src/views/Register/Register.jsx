@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom'
 
 const PasswordVisibleButton = ({isVisible, onClick}) => {
     return (
-        <button className='w-5 h-5' onClick={onClick}>
+        <button className='w-5 h-5 absolute right-2 z-10' onClick={onClick}>
             {isVisible ? 
                 <EyeIcon className="w-5 h-5 text-gray-700 dark:text-gray-400" />
                 :
@@ -27,9 +27,6 @@ const Register = () => {
 
     const [password, setPassword] = useState('')
     const [passwordVisible, setPasswordVisible] = useState(false)
-    
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false)
 
     const [alert, setAlert] = useState(false)
     const [alertType, setAlertType] = useState('success')
@@ -41,7 +38,7 @@ const Register = () => {
         
         let validEmail = email.length >= 3
         let validUserName = userName.length >= 5
-        let validPassword = password.length >= 12 && password === confirmPassword
+        let validPassword = password.length >= 12
         let valid = validEmail && validUserName && validPassword
 
         if(valid) {
@@ -77,43 +74,39 @@ const Register = () => {
                 <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
             </div>
 
-            <p className='font-bold text-xl text-center mb-4'>Register</p>
-            <div>
+            <p className='font-bold text-xl text-center m2-4'>Register</p>
+            <div className='max-w-sm w-full mx-auto'>
 
-                <div className='grid grid-cols-6 gap-4 mb-2'>
-                    <div className="col-span-6 sm:col-span-3">
-                        <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                            Email
-                            <input type="text" id='first-name' className={theme.textfield} value={email} onChange={(e) => setEmail(e.target.value)}  />
-                        </span>
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                        <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                            Username
-                            <input type="text" className={theme.textfield} value={userName} onChange={(e) => setUsername(e.target.value)}  />
-                        </span>
-                    </div>
+                <div className="my-2">
+                    <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                        Email
+                        <input type="text" id='first-name' className={theme.textfield} value={email} onChange={(e) => setEmail(e.target.value)}  />
+                    </span>
                 </div>
 
-                <div className='my-2'>
+                <div className="my-2">
                     <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                        Password
-                        <div className='flex items-center space-x-1'>
-                            <input type={passwordVisible ? 'text' : 'password'} className={theme.textfield} value={password} onChange={(e) => setPassword(e.target.value)} />
-                            <PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />
-                        </div>
+                        Username
+                        <input type="text" className={theme.textfield} value={userName} onChange={(e) => setUsername(e.target.value)}  />
                     </span>
+                </div>
+
+                <div className='mt-2 mb-8'>
+                    <p className='font-semibold text-gray-500 dark:text-gray-400 text-sm mb-6'>
+                        Password
+                    </p>
+                    <div className='flex items-center space-x-1 relative'>
+                        <input
+                            style={{position: "absolute", width: "100%", zIndex: '0', paddingRight: "30px"}}
+                            type={passwordVisible ? 'text' : 'password'} 
+                            className={theme.textfield} 
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)} 
+                        />
+                        <PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />
+                    </div>
                 </div>
                 
-                <div className='my-2'>
-                    <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                        Confirm Password
-                        <div className='flex items-center space-x-1'>
-                            <input type={confirmPasswordVisible ? 'text' : 'password'} className={theme.textfield} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                            <PasswordVisibleButton isVisible={confirmPasswordVisible} onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)} />
-                        </div>
-                    </span>
-                </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
                     <div>
@@ -151,14 +144,6 @@ const Register = () => {
                                 <XCircleIcon className='w-5 h-5 flex-shrink-0 text-red-500' />
                             }
                             <p className='text-sm text-gray-500 dark:text-gray-400 font-semibold'>Password has at least 12 characters</p>
-                        </div>
-                        <div className='flex space-x-1 my-1'>
-                            {confirmPassword === password ? 
-                                <CheckCircleIcon className='w-5 h-5 flex-shrink-0 text-green-500 transition duration-200' />
-                                :
-                                <XCircleIcon className='w-5 h-5 flex-shrink-0 text-red-500' />
-                            }
-                            <p className='text-sm text-gray-500 dark:text-gray-400 font-semibold'>Confirm password equals password</p>
                         </div>
                         
                     </div>
