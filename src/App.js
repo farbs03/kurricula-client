@@ -1,12 +1,6 @@
-import './App.css';
-
 import {Route, Routes} from "react-router-dom"
 
-import Navbar from './components/shared/Navbar';
-
-import Home from './views/Home/Home';
-import About from './views/About/About';
-import Blog from './views/Blog/Blog';
+import Landing from './views/Landing/Landing';
 
 import Courses from './views/Courses/Courses';
 import Course from './views/Courses/Course/Course';
@@ -22,6 +16,8 @@ import { useEffect } from 'react';
 
 import {fakeUser} from './fakeUser';
 
+import AppNav from "./shared/AppNav";
+
 function App() {
 
   let user = localStorage.getItem('kurriculaUser')
@@ -32,24 +28,30 @@ function App() {
     }
   }, [])
 
+  let path = window.location.pathname
+
   return (
-    <div className="App text-[#0d0d0d] min-h-screen h-full overflow-y-auto bg-gray-50">
-      <Navbar>
+    <div className="text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 min-h-screen">
+        {path !== '/' && path !== '/home' && path !== '/login' && path !== '/register' ?
+          <AppNav>
+            <Routes>
+              <Route path='/courses' element={<Courses />} />
+              <Route path='/courses/:course' element={<Course />} />
+              <Route path='/chat' element={<Chat />} />
+              <Route path='/resources' element={<Resources />} />
+              <Route path='/study' element={<Study />} />
+              <Route path='/profile' element={<Profile />} />
+          </Routes>
+        </AppNav>
+        :
         <Routes>
-          <Route path='/home' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/blog' element={<Blog />} />
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/courses/:course' element={<Course />} />
-          <Route path='/chat' element={<Chat />} />
-          <Route path='/resources' element={<Resources />} />
-          <Route path='/study' element={<Study />} />
+          <Route path='/home' element={<Landing />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Landing />} />
         </Routes>
-      </Navbar>
+        }
+        
     </div>
   );
 }

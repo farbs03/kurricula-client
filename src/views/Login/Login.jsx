@@ -62,85 +62,83 @@ const Login = () => {
     }
 
     return (
-        <div className='max-w-lg w-full mx-auto bg-white dark:bg-gray-800 rounded-lg p-6 mt-4'>
-            
-            <div className='block w-10 h-10 mx-auto mb-2'>
-                <AcademicCapIcon className='text-emerald-500 w-10 h-10' />
-            </div>
+        <div className="h-screen flex p-4 flex-col items-center justify-center flex-shrink-0 w-full bg-gradient-to-tr from-emerald-500 to-cyan-500 blur-">
+            <div className='max-w-lg w-full mx-auto bg-white dark:bg-gray-800 rounded-2xl p-6 mt-4 drop-shadow-2xl'>
+                
+                <div className='max-w-sm w-full mx-auto'>
+                    <p className='font-bold text-2xl text-center mb-4'>Sign In</p>
 
-            <p className='font-bold text-xl text-center mb-4'>Sign In</p>
-            <div className='max-w-sm w-full mx-auto'>
+                    <div className='my-2'>
+                        <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                            Email or username
+                            <input type="text" id='email-or-username' className={theme.textfield} value={userInfo} onChange={(e) => setUserInfo(e.target.value)}  />
+                        </span>
+                    </div>
 
-                <div className='my-2'>
-                    <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                        Email or username
-                        <input type="text" id='email-or-username' className={theme.textfield} value={userInfo} onChange={(e) => setUserInfo(e.target.value)}  />
-                    </span>
-                </div>
+                    <div className='mt-2'>
+                        <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                            Password
+                            <div className='flex items-center relative'>
+                                <input
+                                    style={{width: "100%", zIndex: '0', paddingRight: "30px"}}
+                                    type={passwordVisible ? 'text' : 'password'} 
+                                    className={theme.textfield} 
+                                    value={password} 
+                                    onChange={(e) => setPassword(e.target.value)} 
+                                />
+                                <PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />
+                            </div>
+                        </span>
+                    </div>
 
-                <div className='mt-2'>
-                    <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                        Password
-                        <div className='flex items-center relative'>
-                            <input
-                                style={{width: "100%", zIndex: '0', paddingRight: "30px"}}
-                                type={passwordVisible ? 'text' : 'password'} 
-                                className={theme.textfield} 
-                                value={password} 
-                                onChange={(e) => setPassword(e.target.value)} 
+                    <div className='mt-4 flex align-center'>
+                        <label htmlFor='remember' className='flex align-center text-gray-500 dark:text-gray-400 text-sm'>
+                            <input 
+                                id='remember'
+                                type="checkbox" 
+                                className={theme.checkbox}
+                                checked={rememberInfo}
+                                onChange={(e) => setRememberInfo(!rememberInfo)}
+                                style={{marginRight: "4px"}}
                             />
-                            <PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />
-                        </div>
-                    </span>
-                </div>
+                            Remember me
+                        </label>
+                    </div>
+                    
+                    {loading ?
+                        <button disabled className='w-full mt-4 flex justify-center items-center text-center disabled text-gray-100 font-semibold bg-emerald-700 rounded-md px-4 py-2'>
+                            <svg 
+                                className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-100" 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                fill="none" 
+                                viewBox="0 0 24 24"
+                            >
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                            </svg>
+                            Loading...
+                        </button>
+                        :
+                        <Button onClick={onSubmit} variant='primary' style={{width: "100%", marginTop: "16px"}}>
+                            Sign In
+                        </Button>
+                    }
+                    
+                    <p className='my-2 text-gray-500 dark:text-gray-400 text-center text-sm'>Need an account? <NavLink to='/register' className='text-emerald-500'>Sign up today</NavLink> </p>
 
-                <div className='mt-4 flex align-center'>
-                    <label htmlFor='remember' className='flex align-center text-gray-500 dark:text-gray-400 text-sm'>
-                        <input 
-                            id='remember'
-                            type="checkbox" 
-                            className={theme.checkbox}
-                            checked={rememberInfo}
-                            onChange={(e) => setRememberInfo(!rememberInfo)}
-                            style={{marginRight: "4px"}}
-                        />
-                        Remember me
-                    </label>
                 </div>
-                
-                {loading ?
-                    <button disabled className='w-full mt-4 flex justify-center items-center text-center disabled text-gray-100 font-semibold bg-emerald-700 rounded-md px-4 py-2'>
-                        <svg 
-                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-100" 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            fill="none" 
-                            viewBox="0 0 24 24"
-                        >
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                        </svg>
-                        Loading...
-                    </button>
-                    :
-                    <Button onClick={onSubmit} variant='primary' style={{width: "100%", marginTop: "16px"}}>
-                        Sign In
-                    </Button>
+                {alert &&
+                    <Alert duration={1200} open={true} variant={alertType}>
+                        <p className='font-semibold'>
+                            {alertType === 'success' ? 
+                                "Successfully logged in!"
+                                :
+                                "Error logging in!"
+                            }
+                        </p>
+                    </Alert>
                 }
-                
-                <p className='my-2 text-gray-500 dark:text-gray-400 text-center text-sm'>Need an account? <NavLink to='/register' className='text-emerald-500'>Sign up today</NavLink> </p>
-
             </div>
-            {alert &&
-                <Alert duration={1200} open={true} variant={alertType}>
-                    <p className='font-semibold'>
-                        {alertType === 'success' ? 
-                            "Successfully logged in!"
-                            :
-                            "Error logging in!"
-                        }
-                    </p>
-                </Alert>
-            }
         </div>
     )
 }

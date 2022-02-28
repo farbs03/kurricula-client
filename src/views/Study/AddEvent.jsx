@@ -17,7 +17,7 @@ const AddEvent = ({addEvent}) => {
 
     return (
         <motion.div 
-            className='justify-center mx-auto w-full flex items-center space-x-2'
+            className='justify-center max-w-sm flex items-center space-x-2'
             initial={{opacity: 0, y: 5}}
             animate={{opacity: 1, y: 0}}
             transition={{duration: 0.2}}

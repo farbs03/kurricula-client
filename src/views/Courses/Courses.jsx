@@ -28,7 +28,7 @@ const Courses = () => {
     return (
         <div>
             <p className='text-2xl font-bold mb-4'>Courses</p>
-            <div className='flex max-w-7xl w-full mx-auto justify-center'>
+            <div className='flex w-full mx-auto justify-center'>
                 <FilterCourses filterCourses={filterCourses} />
                 <div className='w-full md:ml-6 ml-0'>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 mx-auto'>
@@ -43,7 +43,7 @@ const Courses = () => {
                                 >
                                     <NavLink to={`/courses/${course.href}`}>
                                         <motion.div
-                                            className='rounded-xl drop-shadow-md dark:drop-shadow-none hover:drop-shadow-xl dark:hover:drop-shadow-none transition duration-200 ease-in p-6 bg-white dark:bg-gray-900 dark:ring-2 dark:ring-gray-800 dark:hover:ring-emerald-500'
+                                            className='rounded-xl drop-shadow-md dark:drop-shadow-none hover:drop-shadow-xl transition duration-200 ease-in p-6 bg-white dark:bg-gray-800 dark:bg-opacity-50'
                                         >
                                             <p className='font-semibold font-lg mb-1 mr-2 line-clamp-1'>{getHighlightedText(course.title, search)}</p>
                                             {/*

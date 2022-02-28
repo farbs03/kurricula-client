@@ -2,8 +2,8 @@ export const theme = {
     title: `font-bold text-xl`,
     description: `gray-500 font-semibold font-md`,
     
-    navlink: `border-b-2 border-t-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 font-semibold font-md transition ease-in duration-200`,
-    selectedNavlink: `border-b-2 border-t-2 border-b-emerald-500 border-t-transparent dark:text-gray-100 font-semibold font-md transition ease-in duration-200`,
+    navlink: `cursor-pointer text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 font-semibold font-md transition ease-in duration-200`,
+    selectedNavlink: `dark:text-gray-100 font-semibold font-md transition ease-in duration-200`,
     
     button: `text-white font-semibold bg-emerald-500 rounded-md px-4 py-2 focus:ring-0 hover:bg-emerald-600 active:bg-emerald-700 transition ease-in duration-200`,
     gradientButton: "text-gray-100 font-semibold rounded-md px-4 py-2 focus:ring-0 transition ease-in duration-200 bg-gradient-to-r from-emerald-400 to-emerald-500 hover:shadow-lg hover:shadow-emerald-500/40 active:shadow-none",

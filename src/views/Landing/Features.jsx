@@ -36,9 +36,9 @@ const Features = () => {
                 {features.map((feature) => (
                     <div className='max-w-lg flex flex-col gap-4 justify-center items-center w-full mx-auto p-4 rounded-xl drop-shadow-md transition duration-200 ease-in'>
                         
-                        <div className='bg-gradient-to-r from-emerald-400 to-cyan-400 p-1 shadow-md shadow-cyan-400/40 w-fit rounded-lg'>
+                        <div className='bg-gradient-to-r from-emerald-400 to-cyan-400 p-1 w-fit rounded-lg'>
                             <div className='w-12 h-12 mx-auto inline-flex justify-center items-center flex-shrink-0 bg-white dark:bg-gray-800 rounded-md'>
-                                <span className='text-emerald-500'>{feature.icon}</span>
+                                <span>{feature.icon}</span>
                             </div>
                         </div>
 

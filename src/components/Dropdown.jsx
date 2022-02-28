@@ -21,8 +21,7 @@ const Dropdown = ({data, selected, query, setSelected, setQuery}) => {
           <div className="relative w-full items-center flex text-left bg-white dark:bg-gray-700 rounded-md cursor-default border border-gray-300 dark:border-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white dark:focus-visible:ring-gray-700 focus-visible:ring-offset-emerald-300 focus-visible:ring-offset-2 overflow-hidden">
             <SearchIcon className='w-5 h-5 absolute left-0 ml-3' />
             <Combobox.Input
-              className="w-full bg-white dark:bg-gray-700 placeholder-gray-500 dark:placeholder-gray-400 border-none focus:ring-0 py-3 pr-3 pl-10 leading-5 text-gray-900 dark:text-gray-100"
-              placeholder="School Name"
+              className="w-full bg-gray-100 dark:bg-gray-700 placeholder-gray-500 dark:placeholder-gray-400 border-none focus:ring-0 py-3 pr-3 pl-10 leading-5 text-gray-900 dark:text-gray-100"
               displayValue={query}
               onChange={(event) => setQuery(event.target.value)}
             />

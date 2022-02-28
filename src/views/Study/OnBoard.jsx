@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import {CheckCircleIcon, ChevronLeftIcon, ChevronRightIcon, DotsVerticalIcon, MenuIcon, TrashIcon, CheckIcon} from "@heroicons/react/solid"
+import { DotsVerticalIcon, CheckIcon, ArrowRightIcon } from "@heroicons/react/solid"
 import { ClockIcon } from '@heroicons/react/outline'
 import { motion } from 'framer-motion'
 
-const Event = ({event}) => {
+const OnBoard = ({event}) => {
 
     const formatTime= (time) => {
 
@@ -22,8 +22,6 @@ const Event = ({event}) => {
 
         return `${hours}:${mins} ${afternoon ? ' PM' : ' AM'}`
     }
-
-    const [checked, setChecked] = useState(false)
 
     const eventClass = (t) => {
         switch (t) {
@@ -45,19 +43,17 @@ const Event = ({event}) => {
     return (
         <div className='flex w-full items-center p-4 rounded-xl justify-between transition duration-200 ease-in bg-opacity-50'>
             <div className='flex gap-2 items-center'>
-                {checked ?
-                    <button 
-                        onClick={() => setChecked(!checked)} 
-                        className='w-6 h-6 p-0 bg-emerald-500 text-center inline-flex rounded-full justify-center items-center mr-2 transition duration-100 ease-in'
-                    >
-                        
-                        <CheckIcon className='w-5 h-5 text-gray-100' />
-                    </button>
-                    :
-                    <button onClick={() => setChecked(!checked)} className='w-6 h-6 mr-2 ring-1 ring-gray-300 dark:ring-gray-700 rounded-full transition duration-100 ease-in' />
-                }
+                
+                <button 
+                    onClick={() => {}} 
+                    className='w-6 h-6 p-0 bg-emerald-500 text-center inline-flex rounded-full justify-center items-center mr-2 transition duration-100 ease-in'
+                >
+                    
+                    <ArrowRightIcon className='w-5 h-5 text-gray-100' />
+                </button>
+
                 <div>
-                    <p className={`font-semibold text-sm ${checked ? "line-through" : ""}`}>{event.title}</p>
+                    <p className='font-semibold text-sm'>{event.title}</p>
                     <div className="flex gap-2 items-center text-gray-500 dark:text-gray-400">
                         <ClockIcon className='w-3 h-3' />
                         <p className='font-sembold text-xs'>{event.startTime} - {event.endTime}</p>
@@ -71,4 +67,4 @@ const Event = ({event}) => {
     )
 }
 
-export default Event
+export default OnBoard
