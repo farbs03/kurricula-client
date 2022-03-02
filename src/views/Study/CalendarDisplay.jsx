@@ -149,7 +149,7 @@ const Calendar = ({date, selectedDay, setSelectedDay, month, setMonth, year, set
                                             isSelected(date)
                                             ? "bg-emerald-500 text-gray-100"
                                             : "text-gray-700 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-emerald-500 dark:hover:bg-opacity-50",
-                                            "transition duration-200 ease-in inline-flex w-8 h-8 md:w-10 md:h-10 items-center justify-center cursor-pointer text-center leading-none rounded-full"
+                                            "transition duration-200 ease-in inline-flex w-8 h-8 md:w-10 md:h-10 items-center justify-center cursor-pointer text-center leading-none rounded-lg md:rounded-full"
                                         )}
                                     >
                                         {date}

@@ -2,43 +2,67 @@ import { CheckIcon, XIcon } from '@heroicons/react/solid';
 import React, {useState} from 'react';
 import {theme} from "../../theme"
 import { motion } from 'framer-motion';
+import Modal from "../../components/Modal"
+import { eventThemes } from './eventThemes';
 
 const AddEvent = ({addEvent}) => {
+
     const [title, setTitle] = useState('')
-    const [startTime, setStartTime] = useState(60 * (3 + 12))
-    const [endTime, setEndTime] = useState( 60 * (4 + 12))
+    const [startTime, setStartTime] = useState()
+    const [endTime, setEndTime] = useState()
+    const [color, setColor] = useState()
     
     const onSubmit = () => {
         const data = {title: title, startTime: startTime, endTime: endTime, completed: false}
         if(title) {
             addEvent(data)
+            setTitle('')
+            setStartTime()
+            setEndTime()
+            setColor()
         }
     }
 
     return (
-        <motion.div 
-            className='justify-center max-w-sm flex items-center space-x-2'
-            initial={{opacity: 0, y: 5}}
-            animate={{opacity: 1, y: 0}}
-            transition={{duration: 0.2}}
-        >
-            <input 
-                type='text' 
-                className={theme.textfield} 
-                placeholder='Title' 
-                value={title} 
-                onChange={(e) => setTitle(e.target.value)} 
-            />
-            <div>
-                5:00 PM
+        <div>
+            <p className="text-lg font-semibold mb-2">New Event</p>
+            
+            <div className="my-4">
+                <p className='text-gray-500 dark:text-gray-400 text-sm font-semibold mb-1'>Title</p>
+
+                <input 
+                    type='text' 
+                    className={theme.textfield} 
+                    value={title} 
+                    onChange={(e) => setTitle(e.target.value)} 
+                />
             </div>
-            <button className='w-5 h-5' onClick={onSubmit}>
-                <CheckIcon className='text-green-500 w-5 h-5' />
-            </button>
-            <button className='w-5 h-5'>
-                <XIcon className='text-red-500 w-5 h-5' />
-            </button>
-        </motion.div>
+
+            <div className="my-4 grid grid-cols-2 gap-10 w-full justify-center">
+                <div>
+                    <p className='text-gray-500 dark:text-gray-400 text-sm font-semibold mb-1'>Start Time</p>
+                    <input type='time' className={theme.textfield} />
+                </div>
+
+                <div>
+                    <p className='text-gray-500 dark:text-gray-400 text-sm font-semibold mb-1'>End Time</p>
+                    <input type='time' className={theme.textfield} />
+                </div>
+            </div>
+
+            <div className='my-4'>
+                <p className='text-gray-500 dark:text-gray-400 text-sm font-semibold mb-1'>Color</p>
+                <div className='flex gap-2'>
+                    {eventThemes && Object.values(eventThemes).map((eventTheme) => (
+                        <button 
+                            onClick={() => setColor(eventTheme)} 
+                            className={`rounded-full w-6 h-6 ${eventTheme} ${color === eventTheme ? "ring-2 dark:ring-gray-100" : ""} transition duration-200 ease-in`} 
+                        />
+                    ))}
+                </div>
+            </div>
+            
+        </div>
     )
 };
 
