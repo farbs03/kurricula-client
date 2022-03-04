@@ -100,10 +100,10 @@ const Study = () => {
                                         <motion.div 
                                             key={event.title} 
                                             className='w-full p-2 flex items-center justify-between'
-                                            initial={{opacity: 0, x: 5}}
-                                            animate={{opacity: 1, x: 0}}
-                                            transition={{duration: 0.2}}
-                                            exit={{opacity: 0, x: 5, transition: {duration: 0.2}}}
+                                            initial={{opacity: 0, scale: 0.8}}
+                                            animate={{opacity: 1, scale: 1}}
+                                            transition={{duration: 0.4}}
+                                            exit={{opacity: 0, scale: 0.8, transition: {duration: 0.4}}}
                                         >
                                             <OnBoard event={event} />
                                         </motion.div>
@@ -116,10 +116,10 @@ const Study = () => {
                                     <motion.div 
                                         key={event.title} 
                                         className='w-full p-2 flex items-center justify-between'
-                                        initial={{opacity: 0, x: 5}}
-                                        animate={{opacity: 1, x: 0}}
-                                        transition={{duration: 0.2}}
-                                        exit={{opacity: 0, x: 5, transition: {duration: 0.2}}}
+                                        initial={{opacity: 0, scale: 0.8}}
+                                        animate={{opacity: 1, scale: 1}}
+                                        transition={{duration: 0.4}}
+                                        exit={{opacity: 0, scale: 0.8, transition: {duration: 0.4}}}
                                     >
                                         <Event event={event} />
                                     </motion.div>

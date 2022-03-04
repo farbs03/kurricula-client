@@ -17,7 +17,7 @@ const OnBoard = ({event}) => {
                     className='w-6 h-6 text-center inline-flex bg-emerald-500 rounded-full justify-center items-center mr-2 transition duration-100 ease-in'
                 >
                     
-                    <PlayIcon className='w-6 h-6 dark:text-gray-900' />
+                    <PlayIcon className='w-6 h-6 text-white dark:text-gray-900' />
                 </button>
 
                 <div>
