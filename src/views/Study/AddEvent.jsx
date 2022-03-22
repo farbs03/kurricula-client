@@ -56,7 +56,7 @@ const AddEvent = ({addEvent}) => {
                     {eventThemes && Object.values(eventThemes).map((eventTheme) => (
                         <button 
                             onClick={() => setColor(eventTheme)} 
-                            className={`rounded-full w-6 h-6 ${eventTheme} ${color === eventTheme ? "ring-2 dark:ring-gray-100" : ""} transition duration-200 ease-in`} 
+                            className={`rounded-full w-6 h-6 ${eventTheme} ${color === eventTheme ? "ring-2 ring-gray-900 dark:ring-gray-100" : ""} transition duration-200 ease-in`} 
                         />
                     ))}
                 </div>

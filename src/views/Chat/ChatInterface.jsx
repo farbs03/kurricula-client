@@ -52,7 +52,7 @@ const ChatInterface = ({friendName}) => {
     }
 
     return (
-        <div className='flex-grow bg-white dark:bg-gray-800'>
+        <div className='flex-grow bg-white dark:bg-gray-800 rounded-2xl'>
             <div className='p-4 border-b border-b-gray-200 dark:border-b-gray-700'>
                 
                 <div className="flex items-center gap-4 w-fit mr-auto">
