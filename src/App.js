@@ -1,12 +1,6 @@
-import './App.css';
-
 import {Route, Routes} from "react-router-dom"
 
-import Navbar from './components/shared/Navbar';
-
-import Home from './views/Home/Home';
-import About from './views/About/About';
-import Blog from './views/Blog/Blog';
+import Landing from './views/Landing/Landing';
 
 import Courses from './views/Courses/Courses';
 import Course from './views/Courses/Course/Course';
@@ -18,38 +12,51 @@ import Login from './views/Login/Login';
 import Register from './views/Register/Register';
 
 import Profile from './views/Profile/Profile';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import {fakeUser} from './fakeUser';
 
+import AppNav from "./shared/AppNav";
+
 function App() {
 
-  let user = localStorage.getItem('kurriculaUser')
+  /*let user = localStorage.getItem('kurriculaUser')
 
   useEffect(() => {
     if(!user) {
       localStorage.setItem('kurriculaUser', JSON.stringify(fakeUser))
     }
-  }, [])
+  }, [])*/
+
+  let path = window.location.pathname
+
+  const [token, setToken] = useState();
+
+  const protect = (element) => {
+    if(!token)
+      return <Login setToken={setToken}></Login>
+    else
+      return element
+  }
+
+  const sharedNav = (element) => {
+    return <AppNav>{element}</AppNav>
+  }
 
   return (
-    <div className="App text-[#0d0d0d] min-h-screen h-full overflow-y-auto bg-gray-50">
-      <Navbar>
-        <Routes>
-          <Route path='/home' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/blog' element={<Blog />} />
-          <Route path='/courses' element={<Courses />} />
-          <Route path='/courses/:course' element={<Course />} />
-          <Route path='/chat' element={<Chat />} />
-          <Route path='/resources' element={<Resources />} />
-          <Route path='/study' element={<Study />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/' element={<Home />} />
-        </Routes>
-      </Navbar>
+    <div className="text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 min-h-screen">
+      <Routes>
+        <Route path='/' element={<Landing />} />
+        <Route path='/home' element={<Landing />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/courses' element={sharedNav(<Courses />)} />
+            <Route path='/courses/:course' element={sharedNav(<Course />)} />
+            <Route path='/chat' element={sharedNav(<Chat />)} />
+            <Route path='/resources' element={sharedNav(<Resources />)} />
+            <Route path='/study' element={sharedNav(<Study />)} />
+          <Route path='/profile' element={protect(sharedNav(<Profile />))} />
+      </Routes>
     </div>
   );
 }

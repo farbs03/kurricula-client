@@ -1,96 +1,168 @@
-import React, {useState, useEffect} from 'react'
-import Calendar from 'react-calendar'
-import "./calendar.css"
-import { format, addMonths, subMonths } from "date-fns"
-import {CheckCircleIcon, ChevronLeftIcon, ChevronRightIcon, MenuIcon, PlusIcon, TrashIcon} from "@heroicons/react/solid"
-import { CalendarIcon } from '@heroicons/react/outline'
-import { motion, AnimatePresence } from 'framer-motion'
-import Event from './Event'
+import { useEffect, useState } from "react";
+import classNames from "../../utils/classNames"
+import { fakeUser } from "../../fakeUser";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import format from "date-fns/format";
 
-import nature from "../../assets/nature-backdrop.PNG"
-import { theme } from '../../theme'
+const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
 
-import AddEvent from './AddEvent'
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-const CalendarDisplay = () => {
-    
-    const [date, setDate] = useState(new Date());
+const Calendar = ({date, selectedDay, setSelectedDay, month, setMonth, year, setYear}) => {
 
-    let formatted = format(date, 'MM/dd/yyyy').toString()
-    const [events, setEvents] = useState([])
+    const [numOfDays, setNumOfDays] = useState([]);
+    const [emptyDays, setEmptyDays] = useState([]);
 
-    const addEvent = (event) => {
-        setEvents([...events, event])
-        setEventPrompt(false)
+    const isToday = (date) => {
+        const today = new Date();
+        const d = new Date(year, month, date);
+
+        return format(today, 'yyyy/MM/dd') === format(d, 'yyyy/MM/dd');
+    };
+
+    const isSelected = (date) => {
+        const d = new Date(year, month, date)
+        return selectedDay === format(d, 'yyyy/MM/dd')
     }
 
-    const [eventPrompt, setEventPrompt] = useState(false)
+    const getNoOfDays = () => {
+        let i;
+        let daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        // find where to start calendar day of week
+        let dayOfWeek = new Date(year, month).getDay();
+        let emptyDaysArray = [];
+        for (i = 1; i <= dayOfWeek; i++) {
+            emptyDaysArray.push(i);
+        }
+
+        let daysArray = [];
+        for (i = 1; i <= daysInMonth; i++) {
+            daysArray.push(i);
+        }
+
+        setEmptyDays(emptyDaysArray);
+        setNumOfDays(daysArray);
+    };
+
+    useEffect(() => {
+        getNoOfDays();
+    }, [month]);
+
+    const events = fakeUser.events
     
+    const btnClass = (limit) => {
+        return classNames(
+            month === limit ? "cursor-not-allowed opacity-25" : "",
+            "leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800 transition duration-200 ease-in p-1 items-center focus:outline-none"
+        );
+    };
+
+    const nextMonth = () => {
+        setMonth(month + 1);
+        getNoOfDays();
+    };
+
+    const prevMonth = () => {
+        setMonth(month - 1);
+        getNoOfDays();
+    };
 
     return (
-        <div>
-            
-            <div className='flex flex-wrap gap-6 max-w-4xl mx-auto justify-center'>
-                {/*
-                <div className="flex items-center">
-                    <CalendarIcon className='w-6 h-6 mr-2'/>
-                    <p className='font-bold text-lg'>Calendar</p>
-                </div>
-                */}
-                <div className='drop-shadow-xl rounded-lg bg-white dark:bg-gray-800 w-fit p-2 md:mx-0 mx-auto'>
-                    <Calendar
-                        onChange={setDate}
-                        value={date}
-                        view="month"
-                        tileClassName='transition duration-100 ease-in rounded-full font-medium'
-                        className='text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 text-sm mx-auto'
-                        next2Label={null}
-                        prev2Label={null}
-                        prevLabel={<ChevronLeftIcon className='w-5 h-5 mx-auto' />}
-                        nextLabel={<ChevronRightIcon className='w-5 h-5 mx-auto' />}
-                        
-                    />
-                </div>
-
-                <div className='max-w-lg max-h-fit w-full overflow-y-auto overflow-x-hidden drop-shadow-xl rounded-xl bg-white dark:bg-gray-800 p-4'>
-                    <div className="max-h-auto">
-                        <div className="flex items-center space-x-1 mb-2">
-                            <p className='font-semibold text-lg'>Events</p>
-                            <button onClick={() => setEventPrompt(!eventPrompt)} className='w-6 h-6 inline-flex flex-shrink-0 items-center justify-center rounded-md transition duration-200 ease-in'><PlusIcon className='text-emerald-500 w-5 h-5' /></button>
+        <>
+            <div className="max-w-md w-full">
+                <div className="bg-white dark:bg-gray-800 dark:bg-opacity-50 rounded-2xl p-4 drop-shadow-xl">
+                    <div className="flex items-center justify-between mb-4 px-2">
+                        <div>
+                            <span className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                                {monthNames[month]}
+                            </span>
+                            <span className="ml-2 text-lg font-semibold text-gray-600 dark:text-gray-400">
+                                {year}
+                            </span>
                         </div>
-                        {!events && !eventPrompt ?
-                            <motion.div 
-                                className='h-full p-2 border-2 border-dashed border-gray-300 rounded-lg inline-flex flex-col justify-center flex-shrink-0 w-full'
-                                initial={{opacity: 0}}
-                                animate={{opacity: 1}}
-                                transition={{duration: 0.2}}
+                        <div className="rounded-lg px-1 pt-1">
+                            {/* Previous Month Button */}
+                            <button
+                                type="button"
+                                onClick={() => prevMonth()}
+                                disabled={month === 0}
+                                className={btnClass(0)}
                             >
-                                <p className='font-semibold text-gray-500 text-center'>No Events Added</p>
-                            </motion.div>
-                        :
-                            <AnimatePresence>
-                                {events && events.map((event, idx) => (
-                                    <motion.div 
-                                        key={idx} 
-                                        className='w-full p-2 flex items-center justify-between'
-                                        initial={{opacity: 0, x: 5}}
-                                        animate={{opacity: 1, x: 0}}
-                                        transition={{duration: 0.2}}
-                                        exit={{opacity: 0, x: 5, transition: {duration: 0.2}}}
+                                <ChevronLeftIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 inline-flex leading-none" />
+                            </button>
+                            <div className="inline-flex h-6" />
+                            {/* Next Month Button */}
+                            <button
+                                type="button"
+                                onClick={() => nextMonth()}
+                                disabled={month === 11}
+                                className={btnClass(11)}
+                            >
+                                <ChevronRightIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 inline-flex leading-none" />
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div
+                            className="flex flex-wrap"
+                        >
+                            {days.map((day) => (
+                                <div key={day} className="w-[14.28%]">
+                                    <div className="text-gray-600 dark:text-gray-300 text-xs md:text-sm uppercase tracking-wide font-semibold text-center">
+                                        {day}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex flex-wrap">
+                            {emptyDays.map((emptyDay) => (
+                                <div
+                                    key={emptyDay}
+                                    className="text-center h-12 md:h-16 w-[14.28%]"
+                                />
+                            ))}
+                            {numOfDays.map((date, index) => (
+                                <div
+                                    key={index}
+                                    className="relative h-12 md:h-16 w-[14.28%] inline-flex items-center flex-shrink-0 justify-center"
+                                >
+                                    <div
+                                        onClick={() => setSelectedDay(format(new Date(year, month, date), "yyyy/MM/dd"))}
+                                        className={classNames(
+                                            isToday(date) && !isSelected(date)
+                                            ? "border-2 border-emerald-500 text-gray-900 dark:text-gray-100 "
+                                            :
+                                            isSelected(date)
+                                            ? "bg-emerald-500 text-gray-100"
+                                            : "text-gray-700 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-emerald-500 dark:hover:bg-opacity-50",
+                                            "transition duration-200 ease-in inline-flex w-8 h-8 md:w-10 md:h-10 items-center justify-center cursor-pointer text-center leading-none rounded-lg md:rounded-full"
+                                        )}
                                     >
-                                        <Event event={event} />
-                                    </motion.div>
-                                ))}
-                                {eventPrompt &&
-                                    <AddEvent addEvent={addEvent} />
-                                }
-                            </AnimatePresence>
-                        }
+                                        {date}
+                                    </div>
+
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
-}
+        </>
+    );
+};
 
-export default CalendarDisplay
+export default Calendar;

@@ -5,10 +5,10 @@ import Footer from './Footer'
 import Hero from './Hero'
 import Testimonials from './Testimonials'
 
-const Home = () => {
+const Landing = () => {
 
     return (
-        <div>
+        <div className='max-w-7xl w-full mx-auto p-4'>
             <Hero />
             <Features />
             <Testimonials />
@@ -18,4 +18,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Landing

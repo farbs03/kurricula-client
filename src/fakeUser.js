@@ -58,27 +58,94 @@ export const fakeUser = {
         ],
     },
     events: {
-        "2/14/2022": [
+        onBoard: [
             {
-                title: "Get stuff done",
+                date: new Date(2022, 1, 4),
+                title: "Event 1",
+                theme: "red",
                 startTime: "2:00 PM",
-                endTime: "5:00 PM",
-                completed: true
+                endTime: "5:00 PM"
             },
             {
-                title: "Get more done",
-                startTime: "7:00 PM",
-                endTime: "8:00 PM",
-                completed: false
-            },
-        ],
-        "2/15/2022": [
-            {
-                title: "More work yay",
+                date: new Date(2022, 1, 4),
+                title: "Event 2",
+                theme: "orange",
                 startTime: "2:00 PM",
-                endTime: "5:00 PM",
-                completed: false
+                endTime: "5:00 PM"
             },
+            {
+                date: new Date(2022, 1, 5),
+                title: "Event 3",
+                theme: "green",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+            {
+                date: new Date(2022, 1, 6),
+                title: "Event 4",
+                theme: "sky",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+            {
+                date: new Date(2022, 1, 7),
+                title: "Event 5",
+                theme: "indigo",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+            {
+                date: new Date(2022, 1, 8),
+                title: "Event 6",
+                theme: "violet",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+
         ],
+        inProgress: [
+            {
+                date: new Date(2022, 1, 4),
+                title: "Event 1",
+                theme: "red",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+            {
+                date: new Date(2022, 1, 4),
+                title: "Event 2",
+                theme: "orange",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+            {
+                date: new Date(2022, 1, 5),
+                title: "Event 3",
+                theme: "green",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+            {
+                date: new Date(2022, 1, 6),
+                title: "Event 4",
+                theme: "sky",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+            {
+                date: new Date(2022, 1, 7),
+                title: "Event 5",
+                theme: "indigo",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+            {
+                date: new Date(2022, 1, 8),
+                title: "Event 6",
+                theme: "violet",
+                startTime: "2:00 PM",
+                endTime: "5:00 PM"
+            },
+        ]
     }
 }
