@@ -1,5 +1,7 @@
 import {Route, Routes} from "react-router-dom"
 
+import React from "react"
+
 import Landing from './views/Landing/Landing';
 
 import Courses from './views/Courses/Courses';
@@ -18,19 +20,13 @@ import {fakeUser} from './fakeUser';
 
 import AppNav from "./shared/AppNav";
 
+import useToken from "./shared/useToken";
+
 function App() {
-
-  /*let user = localStorage.getItem('kurriculaUser')
-
-  useEffect(() => {
-    if(!user) {
-      localStorage.setItem('kurriculaUser', JSON.stringify(fakeUser))
-    }
-  }, [])*/
 
   let path = window.location.pathname
 
-  const [token, setToken] = useState();
+  const {token, setToken} = useToken()
 
   const protect = (element) => {
     if(!token)
@@ -46,9 +42,9 @@ function App() {
   return (
     <div className="text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 min-h-screen">
       <Routes>
-        <Route path='/' element={<Landing />} />
+        <Route path='/' element={<Landing />}/>
         <Route path='/home' element={<Landing />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login setToken={setToken}/>} />
         <Route path='/register' element={<Register />} />
         <Route path='/courses' element={sharedNav(<Courses />)} />
             <Route path='/courses/:course' element={sharedNav(<Course />)} />

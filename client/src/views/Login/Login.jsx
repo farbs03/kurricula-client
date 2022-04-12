@@ -20,6 +20,16 @@ const PasswordVisibleButton = ({isVisible, onClick}) => {
     )
 }
 
+async function loginUser(credentials) {
+    return fetch("/login", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials)
+    }).then((res) => res.json())
+}
+
 const Login = ({ setToken }) => {
 
     const [userInfo, setUserInfo] = useState('')
@@ -34,33 +44,16 @@ const Login = ({ setToken }) => {
 
     const [rememberInfo, setRememberInfo] = useState(false)
 
-    /*const onSubmit = (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        
-        let storedUser = JSON.parse(localStorage.getItem('userInfo'))
-        let valid = (storedUser.email === userInfo || storedUser.userName === userInfo) && storedUser.password === password
-
-        if(valid) {
-            setAlert(true)
-            setLoading(true)
-            setAlertType('success')
-
-            console.log('hi')
-        }
-        else {
-            setAlert(true)
-            setAlertType("danger")
-            console.log('oh no')
-        }
-        
-        setTimeout(() => {
-            if(valid) {
-                window.location.pathname = '/'
-                return
-            }
-            setAlert(false)
-        }, 1400)
-    }*/
+        const token = await loginUser({
+            userInfo,
+            password
+        });
+        setToken(token);
+        if(window.location.pathname == '/login')
+            window.location.pathname = '/'
+    }
 
     return (
         <div className="h-screen flex p-4 flex-col items-center justify-center flex-shrink-0 w-full bg-gradient-to-tr from-emerald-500 to-cyan-500 blur-">
@@ -68,43 +61,44 @@ const Login = ({ setToken }) => {
                 
                 <div className='max-w-sm w-full mx-auto'>
                     <p className='font-bold text-2xl text-center mb-4'>Sign In</p>
+                    <form onSubmit={handleSubmit}>
+                        <div className='my-2'>
+                            <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                                Email or username
+                                <input type="text" id='email-or-username' className={theme.textfield} value={userInfo} onChange={(e) => setUserInfo(e.target.value)}  />
+                            </span>
+                        </div>
 
-                    <div className='my-2'>
-                        <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                            Email or username
-                            <input type="text" id='email-or-username' className={theme.textfield} value={userInfo} onChange={(e) => setUserInfo(e.target.value)}  />
-                        </span>
-                    </div>
+                        <div className='mt-2'>
+                            <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                                Password
+                                <div className='flex items-center relative'>
+                                    <input
+                                        style={{width: "100%", zIndex: '0', paddingRight: "30px"}}
+                                        type={passwordVisible ? 'text' : 'password'} 
+                                        className={theme.textfield} 
+                                        value={password} 
+                                        onChange={(e) => setPassword(e.target.value)} 
+                                    />
+                                    {/*<PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />*/}
+                                </div>
+                            </span>
+                        </div>
 
-                    <div className='mt-2'>
-                        <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                            Password
-                            <div className='flex items-center relative'>
-                                <input
-                                    style={{width: "100%", zIndex: '0', paddingRight: "30px"}}
-                                    type={passwordVisible ? 'text' : 'password'} 
-                                    className={theme.textfield} 
-                                    value={password} 
-                                    onChange={(e) => setPassword(e.target.value)} 
+                        <div className='mt-4 flex align-center'>
+                            <label htmlFor='remember' className='flex align-center text-gray-500 dark:text-gray-400 text-sm'>
+                                <input 
+                                    id='remember'
+                                    type="checkbox" 
+                                    className={theme.checkbox}
+                                    checked={rememberInfo}
+                                    onChange={(e) => setRememberInfo(!rememberInfo)}
+                                    style={{marginRight: "4px"}}
                                 />
-                                {/*<PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />*/}
-                            </div>
-                        </span>
-                    </div>
-
-                    <div className='mt-4 flex align-center'>
-                        <label htmlFor='remember' className='flex align-center text-gray-500 dark:text-gray-400 text-sm'>
-                            <input 
-                                id='remember'
-                                type="checkbox" 
-                                className={theme.checkbox}
-                                checked={rememberInfo}
-                                onChange={(e) => setRememberInfo(!rememberInfo)}
-                                style={{marginRight: "4px"}}
-                            />
-                            Remember me
-                        </label>
-                    </div>
+                                Remember me
+                            </label>
+                        </div>
+                    </form>
                     
                     {loading ?
                         <button disabled className='w-full mt-4 flex justify-center items-center text-center disabled text-gray-100 font-semibold bg-emerald-700 rounded-md px-4 py-2'>
@@ -120,7 +114,7 @@ const Login = ({ setToken }) => {
                             Loading...
                         </button>
                         :
-                        <Button onClick={()=>{}/*onSubmit*/} variant='primary' style={{width: "100%", marginTop: "16px"}}>
+                        <Button onClick={handleSubmit} variant='primary' style={{width: "100%", marginTop: "16px"}}>
                             Sign In
                         </Button>
                     }
