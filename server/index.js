@@ -11,18 +11,10 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
-// Have Node serve the files for our built React app
-//app.use(express.static(path.resolve(__dirname, '../client/build')));
-
 app.post("/login", (req, res) => {
   console.log(req.body)
   res.json({ token: "token123" });
 });
-
-// All other GET requests not handled before will return our React app
-/*app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});*/
 
 // Have Node serve the files for our built React app
 app.listen(PORT, () => {
