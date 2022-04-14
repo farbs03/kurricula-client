@@ -12,9 +12,11 @@ datasource db {
 
 model User {
   UserId Int @id @default(autoincrement())
-  Email String @unique
-  Password String
+  Email String @unique @db.VarChar(320)
+  Password String @db.VarChar(60)
   RegisterDate DateTime @default(now())
-  FirstName String?
-  LastName String?
+  School String @db.VarChar(50)
+  FirstName String? @db.VarChar(50)
+  LastName String? @db.VarChar(50)
+  Token String?
 }

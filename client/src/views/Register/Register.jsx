@@ -23,15 +23,23 @@ const PasswordVisibleButton = ({isVisible, onClick}) => {
     )
 }
 
+async function registerUser(credentials) {
+    return fetch("/register", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials)
+    }).then((res) => res.json())
+}
 
-const Register = () => {
+const Register = ({ setToken }) => {
 
     const [email, setEmail] = useState('')
-
-    const [userName, setUsername] = useState('')
-
     const [school, setSchool] = useState()
     const [query, setQuery] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
 
     const [password, setPassword] = useState('')
     const [passwordVisible, setPasswordVisible] = useState(false)
@@ -41,40 +49,18 @@ const Register = () => {
 
     const [loading, setLoading] = useState(false)
 
-    const onSubmit = (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        
-        let validEmail = email.length >= 3
-        let validUserName = userName.length >= 5
-        let validSchool = schoolList.indexOf(school) !== -1
-        let validPassword = password.length >= 12
-        let valid = validEmail && validUserName && validSchool && validPassword
-
-        if(valid) {
-            setAlert(true)
-            setLoading(true)
-            setAlertType('success')
-            const data = {
-                email: email,
-                userName: userName,
-                school: school,
-                password: password
-            }
-            localStorage.setItem('userInfo', JSON.stringify(data))
-            console.log(data)
-        }
-        else {
-            setAlert(true)
-            setAlertType("danger")
-            console.log('oh no')
-        }
-        
-        setTimeout(() => {
-            if(valid) {
-                window.location.pathname = '/'
-            }
-            setAlert(false)
-        }, 1400)
+        const data = await registerUser({
+            email: email,
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            school: school
+        });
+        setToken(data);
+        if(window.location.pathname == '/register')
+            window.location.pathname = '/'
     }
 
     return (
@@ -88,27 +74,28 @@ const Register = () => {
                     <div className="my-2">
                         <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
                             Email
-                            <input type="text" id='first-name' className={theme.textfield} value={email} onChange={(e) => setEmail(e.target.value)}  />
+                            <input type="text" id='first-name' className={theme.textfield} maxlength="320" value={email} onChange={(e) => setEmail(e.target.value)}  />
                         </span>
                     </div>
 
                     <div className="my-2">
                         <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                            Username
-                            <input type="text" className={theme.textfield} value={userName} onChange={(e) => setUsername(e.target.value)}  />
+                            First Name
+                            <input type="text" className={theme.textfield} maxlength="50" value={firstName} onChange={(e) => setFirstName(e.target.value)}  />
+                        </span>
+                    </div>
+
+                    <div className="my-2">
+                        <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                            Last Name
+                            <input type="text" className={theme.textfield} maxlength="50" value={lastName} onChange={(e) => setLastName(e.target.value)}  />
                         </span>
                     </div>
 
                     <div className="my-2">
                         <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
                             School
-                            <Dropdown 
-                                data={schoolList}
-                                query={query}
-                                setQuery={setQuery}
-                                selected={school}
-                                setSelected={setSchool}
-                            />
+                            <input type="text" className={theme.textfield} maxlength="50" value={school} onChange={(e) => setSchool(e.target.value)}  />
                         </span>
                     </div>
 
@@ -144,18 +131,6 @@ const Register = () => {
                             
                         </div>
                         <div>
-                            <p className='text-sm font-semibold hidden md:block'>Username</p>
-
-                            <div className='flex space-x-1 my-1'>
-                                {userName.length >= 5 ? 
-                                    <CheckCircleIcon className='w-5 h-5 flex-shrink-0 text-green-500' />
-                                    :
-                                    <XCircleIcon className='w-5 h-5 flex-shrink-0 text-red-500' />
-                                }
-                                <p className='text-sm text-gray-500 dark:text-gray-400 font-semibold'>Username has at least 5 characters</p>
-                            </div>
-                        </div>
-                        <div>
                             <p className='text-sm font-semibold hidden md:block'>Password</p>
 
                             <div className='flex space-x-1 my-1'>
@@ -183,7 +158,7 @@ const Register = () => {
                             Loading...
                         </button>
                         :
-                        <Button onClick={onSubmit} variant='primary' style={{width: "100%", marginTop: "16px"}}>
+                        <Button onClick={handleSubmit} variant='primary' style={{width: "100%", marginTop: "16px"}}>
                             Register
                         </Button>
                     }

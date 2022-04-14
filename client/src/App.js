@@ -30,7 +30,7 @@ function App() {
 
   const protect = (element) => {
     if(!token)
-      return <Login setToken={setToken}></Login>
+      return <Login setToken={setToken}/>
     else
       return element
   }
@@ -45,7 +45,7 @@ function App() {
         <Route path='/' element={<Landing />}/>
         <Route path='/home' element={<Landing />} />
         <Route path='/login' element={<Login setToken={setToken}/>} />
-        <Route path='/register' element={<Register />} />
+        <Route path='/register' element={<Register setToken={setToken}/>} />
         <Route path='/courses' element={sharedNav(<Courses />)} />
             <Route path='/courses/:course' element={sharedNav(<Course />)} />
             <Route path='/chat' element={sharedNav(<Chat />)} />

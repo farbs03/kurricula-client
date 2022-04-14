@@ -32,7 +32,7 @@ async function loginUser(credentials) {
 
 const Login = ({ setToken }) => {
 
-    const [userInfo, setUserInfo] = useState('')
+    const [email, setEmail] = useState('')
 
     const [password, setPassword] = useState('')
     const [passwordVisible, setPasswordVisible] = useState(false)
@@ -46,11 +46,11 @@ const Login = ({ setToken }) => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const token = await loginUser({
-            userInfo,
-            password
+        const data = await loginUser({
+            email: email,
+            password: password
         });
-        setToken(token);
+        setToken(data);
         if(window.location.pathname == '/login')
             window.location.pathname = '/'
     }
@@ -61,44 +61,42 @@ const Login = ({ setToken }) => {
                 
                 <div className='max-w-sm w-full mx-auto'>
                     <p className='font-bold text-2xl text-center mb-4'>Sign In</p>
-                    <form onSubmit={handleSubmit}>
-                        <div className='my-2'>
-                            <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                                Email or username
-                                <input type="text" id='email-or-username' className={theme.textfield} value={userInfo} onChange={(e) => setUserInfo(e.target.value)}  />
-                            </span>
-                        </div>
+                    <div className='my-2'>
+                        <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                            Email
+                            <input type="text" id='email-or-username' className={theme.textfield} value={email} onChange={(e) => setEmail(e.target.value)}  />
+                        </span>
+                    </div>
 
-                        <div className='mt-2'>
-                            <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                                Password
-                                <div className='flex items-center relative'>
-                                    <input
-                                        style={{width: "100%", zIndex: '0', paddingRight: "30px"}}
-                                        type={passwordVisible ? 'text' : 'password'} 
-                                        className={theme.textfield} 
-                                        value={password} 
-                                        onChange={(e) => setPassword(e.target.value)} 
-                                    />
-                                    {/*<PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />*/}
-                                </div>
-                            </span>
-                        </div>
-
-                        <div className='mt-4 flex align-center'>
-                            <label htmlFor='remember' className='flex align-center text-gray-500 dark:text-gray-400 text-sm'>
-                                <input 
-                                    id='remember'
-                                    type="checkbox" 
-                                    className={theme.checkbox}
-                                    checked={rememberInfo}
-                                    onChange={(e) => setRememberInfo(!rememberInfo)}
-                                    style={{marginRight: "4px"}}
+                    <div className='mt-2'>
+                        <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
+                            Password
+                            <div className='flex items-center relative'>
+                                <input
+                                    style={{width: "100%", zIndex: '0', paddingRight: "30px"}}
+                                    type={passwordVisible ? 'text' : 'password'} 
+                                    className={theme.textfield} 
+                                    value={password} 
+                                    onChange={(e) => setPassword(e.target.value)} 
                                 />
-                                Remember me
-                            </label>
-                        </div>
-                    </form>
+                                {/*<PasswordVisibleButton isVisible={passwordVisible} onClick={() => setPasswordVisible(!passwordVisible)} />*/}
+                            </div>
+                        </span>
+                    </div>
+
+                    <div className='mt-4 flex align-center'>
+                        <label htmlFor='remember' className='flex align-center text-gray-500 dark:text-gray-400 text-sm'>
+                            <input 
+                                id='remember'
+                                type="checkbox" 
+                                className={theme.checkbox}
+                                checked={rememberInfo}
+                                onChange={(e) => setRememberInfo(!rememberInfo)}
+                                style={{marginRight: "4px"}}
+                            />
+                            Remember me
+                        </label>
+                    </div>
                     
                     {loading ?
                         <button disabled className='w-full mt-4 flex justify-center items-center text-center disabled text-gray-100 font-semibold bg-emerald-700 rounded-md px-4 py-2'>
