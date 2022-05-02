@@ -25,7 +25,7 @@ You may also see any errors in the console.
 
 This project runs on Node.js for the client and server.
 
-The client uses React and Tailwind CSS
+The client uses React and Tailwind CSS\
 Components of interest lie in the /src/views directory
 Authentication tokens are stored in HTTPS-Only Cookies
 
