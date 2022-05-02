@@ -4,6 +4,10 @@ This project was created by Chris Farber and Ethan Zentz
 
 ## Running Locally
 
+Install dependencies by navigating to both the root and client directories and running:
+
+### `npm i`
+
 To start the server (default port 3001), navigate to the root directory and run:
 
 ### `npm run dev`
