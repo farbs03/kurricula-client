@@ -16,3 +16,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any errors in the console.
+
+## Technology Used
+
+This project runs on Node.js for the client and server.
+
+The client uses React and Tailwind CSS
+Components of interest lie in the /src/views directory
+Authentication tokens are stored in HTTPS-Only Cookies
+
+The server uses Express to handle requests and Prisma to interface with a PostgreSQL database
