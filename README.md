@@ -26,7 +26,7 @@ You may also see any errors in the console.
 This project runs on Node.js for the client and server.
 
 The client uses React and Tailwind CSS\
-Components of interest lie in the /src/views directory
+Components of interest lie in the /src/views directory\
 Authentication tokens are stored in HTTPS-Only Cookies
 
 The server uses Express to handle requests and Prisma to interface with a PostgreSQL database
