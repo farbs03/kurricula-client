@@ -4,11 +4,11 @@ This project was created by Chris Farber and Ethan Zentz
 
 ## Running Locally
 
-In the root directory, you must run:
+To start the server (default port 3001), navigate to the root directory and run:
 
 ### `npm run dev`
 
-In the "client" directory, you can run:
+To start the client (default port 3000), navigate to the client directory and run:
 
 ### `npm start`
 
