@@ -14,9 +14,6 @@ import Login from './views/Login/Login';
 import Register from './views/Register/Register';
 
 import Profile from './views/Profile/Profile';
-import { useEffect, useState } from 'react';
-
-import {fakeUser} from './fakeUser';
 
 import AppNav from "./shared/AppNav";
 

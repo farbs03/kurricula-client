@@ -37,10 +37,9 @@ const Login = ({ setToken }) => {
     const [password, setPassword] = useState('')
     const [passwordVisible, setPasswordVisible] = useState(false)
 
-    const [alert, setAlert] = useState(false)
-    const [alertType, setAlertType] = useState('success')
-
     const [loading, setLoading] = useState(false)
+
+    const [failedLogin, setFailedLogin] = useState(false)
 
     const [rememberInfo, setRememberInfo] = useState(false)
 
@@ -50,7 +49,13 @@ const Login = ({ setToken }) => {
             email: email,
             password: password
         });
-        setToken(data);
+        if(data.token==null){
+            setFailedLogin(true)
+            console.log(data.message)
+            return
+        }
+        setFailedLogin(false)
+        setToken(data.token);
         if(window.location.pathname == '/login')
             window.location.pathname = '/'
     }
@@ -97,6 +102,13 @@ const Login = ({ setToken }) => {
                             Remember me
                         </label>
                     </div>
+
+                    <div className={'grid grid-cols-1 md:grid-cols-1 mt-4 md:mt-6 '+(failedLogin?'block':'hidden')}>
+                        <div className='my-1 flex mx-auto'>
+                            <XCircleIcon className='w-5 h-5 mr-2 flex-shrink-0 text-red-500' />
+                            <p className='text-sm text-gray-500 dark:text-gray-400 font-semibold flex-none'>Email or password incorrect</p>
+                        </div>
+                    </div>
                     
                     {loading ?
                         <button disabled className='w-full mt-4 flex justify-center items-center text-center disabled text-gray-100 font-semibold bg-emerald-700 rounded-md px-4 py-2'>
@@ -120,17 +132,6 @@ const Login = ({ setToken }) => {
                     <p className='my-2 text-gray-500 dark:text-gray-400 text-center text-sm'>Need an account? <NavLink to='/register' className='text-emerald-500'>Sign up today</NavLink> </p>
 
                 </div>
-                {alert &&
-                    <Alert duration={1200} open={true} variant={alertType}>
-                        <p className='font-semibold'>
-                            {alertType === 'success' ? 
-                                "Successfully logged in!"
-                                :
-                                "Error logging in!"
-                            }
-                        </p>
-                    </Alert>
-                }
             </div>
         </div>
     )

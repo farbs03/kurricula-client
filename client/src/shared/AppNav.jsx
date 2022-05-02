@@ -50,9 +50,9 @@ const AppNav = (props) => {
                 <div className='p-4 w-full relative h-full'>
                     <div className='mb-10'>
                         <div className="w-16 h-16 mx-auto dark:invert">
-                            <button onClick={() => setPath("/banana")}>
+                            <NavLink to='/'>
                                 <img src={logo} alt='logo' className='w-16 h-16' />
-                            </button>
+                            </NavLink>
                         </div>
                     </div>
                     <div>
@@ -114,12 +114,14 @@ const AppNav = (props) => {
                         </div>
                     </div>
                     <div className='flex items-center gap-2 md:gap-4'>
-                        <button className="relative w-8 h-8 inline-flex items-center justify-center flex-shrink-0 hover:bg-gray-200 dark:hover:bg-gray-800 transition duration-200 ease-in rounded-full">
+                        <button onClick={()=>{alert('Ring Ring!')}} className="relative w-8 h-8 inline-flex items-center justify-center flex-shrink-0 hover:bg-gray-200 dark:hover:bg-gray-800 transition duration-200 ease-in rounded-full">
                             <div className='w-2 h-2 bg-red-500 rounded-full absolute top-1 right-1' />
                             <BellIcon className='w-6 h-6' />
                         </button>
                         <button className="w-8 h-8 inline-flex items-center justify-center flex-shrink-0 hover:bg-gray-200 dark:hover:bg-gray-800 transition duration-200 ease-in rounded-full">
-                            <UserCircleIcon className='w-6 h-6' />
+                            <NavLink to='/profile'>
+                                <UserCircleIcon className='w-6 h-6' />
+                            </NavLink>
                         </button>
                         
                     </div>

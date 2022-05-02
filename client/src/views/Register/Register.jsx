@@ -79,6 +79,7 @@ const Register = ({ setToken }) => {
         }
     }
 
+    //Utility function to add/remove extra spacing used for error messages
     const allVisualValid = (data) => {
         for (const [key, value] of Object.entries(data)) {
             if(!data[key])
@@ -112,7 +113,12 @@ const Register = ({ setToken }) => {
             lastName: lastName,
             school: school
         });
-        setToken(data);
+        if(data.token==null){
+            console.log(data.message)
+            alert(data.message)
+            return
+        }
+        setToken(data.token);
         if(window.location.pathname === '/register')
             window.location.pathname = '/'
     }

@@ -10,10 +10,10 @@ import logo from '../../assets/kurriculalogo.png'
 const LandingNav = () => {
 
     const links = [
-        {title: 'About', id: 'about'},
-        {title: 'Features', id: 'features'},
-        {title: 'Team', id: 'team'},
-        {title: 'Contact', id: 'contact'}
+        {title: 'About', id: 'about', type: 'section'},
+        {title: 'Features', id: 'features', type: 'section'},
+        {title: 'Courses', id: 'courses', type: 'page'},
+        {title: 'Contact', id: 'contact', type: 'section'}
     ]
 
     const [drawerOpen, setDrawerOpen] = useState(false)
@@ -34,7 +34,7 @@ const LandingNav = () => {
                         <a 
                             className={theme.navlink}
                             key={link.id}
-                            href={"#section_"+link.id}
+                            href={(link.type=='section')?('#section_'+link.id):('/'+link.id)}
                             style={{
                                 margin: "0px 16px",
                                 display: "block"
@@ -45,40 +45,40 @@ const LandingNav = () => {
                     ))}
                 </div>
 
-                <div className='px-2 space-x-3 hidden md:flex items-center'>
+                    <div className='px-2 space-x-3 hidden md:flex items-center'>
 
-                    <NavLink to="/login">
-                        <Button>Login</Button>
-                    </NavLink>
-                    <NavLink to="/register">
-                        <Button variant="primary">Register</Button>
-                    </NavLink>
+                        <NavLink to="/login">
+                            <Button>Login</Button>
+                        </NavLink>
+                        <NavLink to="/register">
+                            <Button variant="primary">Register</Button>
+                        </NavLink>
 
-                </div>
+                    </div>
 
-                <div className='block md:hidden'>
-                    <button className='w-5 h-5' onClick={() => setDrawerOpen(true)}>
-                        <MenuIcon className='w-5 h-5 text-gray-900 dark:text-gray-100' />
-                    </button>
-                    <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                        <div className='w-full'>
-                            <div className='mt-6 px-2 flex flex-wrap items-center space-x-4'>
-                                {links.map((link) => (
-                                    <a onClick={() => setDrawerOpen(false)} key={link.href} className='font-semibold text-gray-700 dark:text-gray-300'>{link.title}</a>
-                                ))}
+                    <div className='block md:hidden'>
+                        <button className='w-5 h-5' onClick={() => setDrawerOpen(true)}>
+                            <MenuIcon className='w-5 h-5 text-gray-900 dark:text-gray-100' />
+                        </button>
+                        <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+                            <div className='w-full'>
+                                <div className='mt-6 px-2 flex flex-wrap items-center space-x-4'>
+                                    {links.map((link) => (
+                                        <a onClick={() => setDrawerOpen(false)} key={link.href} className='font-semibold text-gray-700 dark:text-gray-300'>{link.title}</a>
+                                    ))}
+                                </div>
+                                <div className='mt-4 p-2 justify-center'>
+                                    <NavLink onClick={() => setDrawerOpen(false)} to="/register">
+                                        <button className={theme.gradientButton} style={{width: "100%", textAlign: "center"}}>Register</button>
+                                    </NavLink>
+                                </div>
+                                <div className='px-2'>
+                                    <p className='text-gray-500 dark:text-gray-400'>Already have an account?</p>
+                                    <NavLink onClick={() => setDrawerOpen(false)} to="/login" className='text-emerald-500'>Sign in</NavLink>
+                                </div>
                             </div>
-                            <div className='mt-4 p-2 justify-center'>
-                                <NavLink onClick={() => setDrawerOpen(false)} to="/register">
-                                    <button className={theme.gradientButton} style={{width: "100%", textAlign: "center"}}>Register</button>
-                                </NavLink>
-                            </div>
-                            <div className='px-2'>
-                                <p className='text-gray-500 dark:text-gray-400'>Already have an account?</p>
-                                <NavLink onClick={() => setDrawerOpen(false)} to="/login" className='text-emerald-500'>Sign in</NavLink>
-                            </div>
-                        </div>
-                    </Drawer>
-                </div>
+                        </Drawer>
+                    </div>
             </div> 
         </div>
     )

@@ -21,56 +21,44 @@ Dependencies:
 
 */
 
-import LANG_DATA from "./lang/en_us.json"
 const emailValidator = require("email-validator")
-
-let lang = LANG_DATA.fieldValidation
-
-function createResponse(data, msg) {
-    return {
-        valid: data,
-        message: (msg==null)?"":msg
-    }
-}
 
 function validateEmail(data){
     if(data === "" || data == null)
-        return createResponse(false, lang.email.missing)
-    let valid = emailValidator.validate(data)
-    return createResponse(valid, valid?lang.email.valid:lang.email.invalid)
+        return false
+    return emailValidator.validate(data)
 }
 
 function validatePassword(data){
     if(data === "" || data == null)
-        return createResponse(false, lang.password.missing)
+        return false
     if(data.length < 8)
-        return createResponse(false, lang.password.min)
+        return false
     if(data.length > 100)
-        return createResponse(false, lang.password.max)
-    return createResponse(true, lang.password.valid)
+        return false
+    return true
 }
 
 function validateFirstName(data){
     if(data === "" || data == null)
-        return createResponse(false, lang.firstName.missing)
+        return false
     if(data.length > 50)
-        return createResponse(false, lang.firstName.max)
-    return createResponse(true, lang.firstName.valid)
+        return false
+    return true
 }
 
 function validateLastName(data){
     if(data === "" || data == null)
-        return createResponse(false, lang.lastName.missing)
+        return false
     if(data.length > 50)
-        return createResponse(false, lang.lastName.max)
-    return createResponse(true, lang.lastName.valid)
+        return false
+    return true
 }
 
 function validateSchool(data){
     if(data === "" || data == null)
-        return createResponse(false, lang.school.missing)
-    let valid = data === "Hamilton Southeastern High School"
-    return createResponse(valid, valid?lang.school.valid:lang.school.invalid)
+        return false
+    return data === "Hamilton Southeastern High School"
 }
 
 export default function validate(field, data) {
@@ -86,6 +74,6 @@ export default function validate(field, data) {
         case "school":
             return validateSchool(data)
         default:
-            return createResponse(false)
+            return false
     }
 }
