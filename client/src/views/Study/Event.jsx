@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {DotsVerticalIcon, CheckIcon} from "@heroicons/react/solid"
 import { ClockIcon } from '@heroicons/react/outline'
 import { eventThemes } from './eventThemes'
-import formatTime from '../../utils/formatTime'
 
 const Event = ({event}) => {
 

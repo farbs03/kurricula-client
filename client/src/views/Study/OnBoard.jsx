@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
-import { DotsVerticalIcon, CheckIcon, ArrowRightIcon, ArrowCircleRightIcon, PlayIcon } from "@heroicons/react/solid"
+import React from 'react'
+import { DotsVerticalIcon, PlayIcon } from "@heroicons/react/solid"
 import { ClockIcon } from '@heroicons/react/outline'
 import { eventThemes } from "./eventThemes"
-import formatTime from '../../utils/formatTime'
 
 const OnBoard = ({event}) => {
 

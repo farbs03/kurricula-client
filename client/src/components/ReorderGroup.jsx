@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Reorder } from "framer-motion";
-import ReorderItem  from "./ReorderItem";
+import { Reorder } from "framer-motion"
+import ReorderItem  from "./ReorderItem"
 
 const ReorderGroup = ({items, setItems}) => {
     return (

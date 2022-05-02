@@ -1,5 +1,6 @@
 import { VariableIcon, BeakerIcon, BookOpenIcon, GlobeAltIcon, PencilIcon, TranslateIcon } from "@heroicons/react/solid"
 import {data} from "./data"
+import React from 'react'
 
 let topics = ['Math', 'Science', 'English', 'Social Studies', 'Language', 'Art']
 let organizedCourses = []

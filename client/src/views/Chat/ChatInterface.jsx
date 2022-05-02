@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from "react"
-import {motion} from "framer-motion"
+import {motion} from 'framer-motion'
 import {ArrowCircleUpIcon} from "@heroicons/react/solid"
 import "./chat.css"
 import {fakeUser} from "../../fakeUser"

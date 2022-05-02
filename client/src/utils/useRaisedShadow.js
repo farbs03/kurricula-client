@@ -1,5 +1,5 @@
-import { animate, useMotionValue } from "framer-motion";
-import { useEffect } from "react";
+import { animate, useMotionValue } from 'framer-motion'
+import { useEffect } from "react"
 
 const inactiveShadow = "0px 0px 0px rgba(0,0,0,0.8)";
 

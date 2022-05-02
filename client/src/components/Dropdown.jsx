@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, SearchIcon } from '@heroicons/react/solid'
+import React from 'react'
 
 const Dropdown = ({data, selected, query, setSelected, setQuery}) => {
 

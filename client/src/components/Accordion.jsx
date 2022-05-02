@@ -1,5 +1,6 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/solid'
+import React from 'react'
 
 const Accordion = ({title, children}) => {
   return (

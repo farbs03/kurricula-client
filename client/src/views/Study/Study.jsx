@@ -12,7 +12,7 @@ import BottomDrawer from '../../components/BottomDrawer'
 import { fakeUser } from '../../fakeUser'
 import OnBoard from './OnBoard'
 
-import {Reorder} from "framer-motion"
+import {Reorder} from 'framer-motion'
 import ReorderItem from '../../components/ReorderItem'
 import Modal from '../../components/Modal'
 
