@@ -40,7 +40,7 @@ const Hero = () => {
                         initial={{opacity: 0, x: 20}}
                         animate={{opacity: 1, x: 0}}
                         transition={{duration: 0.4, delay: 0.4}}
-                        className='max-w-[300px] w-full shadow-xl bg-transparent rounded-2xl'
+                        className='max-w-[300px] w-full bg-transparent rounded-3xl'
                     >
                         <PhoneDisplay />
                     </motion.div>
