@@ -1,0 +1,30 @@
+{
+    "fieldValidation": {
+        "email":{
+            "valid": "Email",
+            "missing": "Missing email",
+            "invalid": "Invalid Email"
+        },
+        "password": {
+            "valid": "Password",
+            "missing": "Missing password",
+            "min": "Password must be at least 8 characters",
+            "max": "Password cannot be greater than 100 characters"
+        },
+        "firstName": {
+            "valid": "First Name",
+            "missing": "Missing first name",
+            "max": "First name cannot be greater than 50 characters"
+        },
+        "lastName": {
+            "valid": "Last Name",
+            "missing": "Missing last name",
+            "max": "Last name cannot be greater than 50 characters"
+        },
+        "school": {
+            "valid": "School",
+            "missing": "Missing school",
+            "invalid": "Selected school is not valid"
+        }
+    }
+}
