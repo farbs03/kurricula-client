@@ -15,7 +15,7 @@ const Event = ({event}) => {
                 {checked ?
                     <button 
                         onClick={() => setChecked(!checked)} 
-                        className='w-6 h-6 bg-emerald-500 text-center inline-flex rounded-full justify-center items-center mr-2 transition duration-100 ease-in'
+                        className='w-6 h-6 bg-emerald-400 text-center inline-flex rounded-full justify-center items-center mr-2 transition duration-100 ease-in'
                     >
                         
                         <CheckIcon className='w-5 h-5 text-gray-100' />

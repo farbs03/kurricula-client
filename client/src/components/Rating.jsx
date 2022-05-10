@@ -15,29 +15,29 @@ const Rating = ({variant, displayValue}) => {
     }
 
     return (
-        <div classname='w-fit flex items-center' onMouseLeave={handleMouseLeave}>
+        <div classname='w-fit flex items-center h-6' onMouseLeave={handleMouseLeave}>
             {[1, 2, 3, 4, 5].map((val) => (
                 <>
                     {variant === 'display' ?
                         <button 
-                            className='w-5 h-5 mx-1 transition-all duration-200 ease-in text-center' 
+                            className='w-6 h-6 mx-1 transition-all duration-200 ease-in text-center' 
                         >
                             {val <= displayValue ?
-                                <StarSolid className='w-5 h-5 text-yellow-300' />
+                                <StarSolid className='w-6 h-6 text-emerald-300' />
                                 :
-                                <StarOutline className='w-5 h-5 text-gray-500' />
+                                <StarOutline className='w-6 h-6 text-gray-500' />
                             }
                         </button>
                         :
                         <button 
-                            className='w-5 h-5 mx-1 transition-all duration-200 ease-in text-center' 
+                            className='w-6 h-6 mx-1 transition-all duration-200 ease-in text-center' 
                             onMouseOver={() => setHover(val)} 
                             onClick={() => setRating(val)}
                         >
                             {val <= hover || val <= rating ?
-                                <StarSolid className='w-5 h-5 text-yellow-300' />
+                                <StarSolid className='w-6 h-6 text-emerald-300' />
                                 :
-                                <StarOutline className='w-5 h-5 text-gray-500' />
+                                <StarOutline className='w-6 h-6 text-gray-500' />
                             }
                         </button>
                     }

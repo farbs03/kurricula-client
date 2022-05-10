@@ -87,7 +87,7 @@ const ChatInterface = ({friendName}) => {
                                 className={
                                     classNames(
                                         message.from === "you" ? 
-                                        "bg-emerald-500 text-white rounded-br-none" 
+                                        "bg-emerald-400 text-white rounded-br-none" 
                                         : 
                                         "bg-gray-200 dark:bg-gray-600 text-black dark:text-gray-100 rounded-tl-none",
 
@@ -116,7 +116,7 @@ const ChatInterface = ({friendName}) => {
                         onKeyPress={handleKeypress}
                     />
                     <button className='w-6 h-6' onClick={sendMessage}>
-                        <ArrowCircleUpIcon className='w-6 h-6 text-emerald-500 hover:text-emerald-600 transition duration-200 ease-in' />
+                        <ArrowCircleUpIcon className='w-6 h-6 text-emerald-400 hover:text-emerald-500 transition duration-200 ease-in' />
                     </button>
                 </form>
             </div>

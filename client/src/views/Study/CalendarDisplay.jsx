@@ -144,11 +144,11 @@ const Calendar = ({date, selectedDay, setSelectedDay, month, setMonth, year, set
                                         onClick={() => setSelectedDay(format(new Date(year, month, date), "yyyy/MM/dd"))}
                                         className={classNames(
                                             isToday(date) && !isSelected(date)
-                                            ? "border-2 border-emerald-500 text-gray-900 dark:text-gray-100 "
+                                            ? "border-2 border-emerald-400 text-gray-900 dark:text-gray-100 "
                                             :
                                             isSelected(date)
-                                            ? "bg-emerald-500 text-gray-100"
-                                            : "text-gray-700 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-emerald-500 dark:hover:bg-opacity-50",
+                                            ? "bg-emerald-400 text-gray-100"
+                                            : "text-gray-700 dark:text-gray-300 hover:bg-emerald-100 dark:hover:bg-emerald-400 dark:hover:bg-opacity-50",
                                             "transition duration-200 ease-in inline-flex w-8 h-8 md:w-10 md:h-10 items-center justify-center cursor-pointer text-center leading-none rounded-lg md:rounded-full"
                                         )}
                                     >

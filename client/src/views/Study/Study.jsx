@@ -47,7 +47,7 @@ const Study = () => {
             <div className="mb-2 hidden md:block">
                 <button 
                     onClick={() => setEventPrompt(!eventPrompt)} 
-                    className='rounded-md font-semibold bg-emerald-500 hover:bg-emerald-600 transition duration-200 ease-in text-gray-100 px-4 py-2 flex items-center gap-2'
+                    className='rounded-md font-semibold bg-emerald-400 hover:bg-emerald-500 transition duration-200 ease-in text-gray-100 px-4 py-2 flex items-center gap-2'
                 >
                     New Event <PlusIcon className='w-5 h-5' />
                 </button>
@@ -59,7 +59,7 @@ const Study = () => {
 
             <div className='md:hidden'>
                     <button 
-                        className="px-4 py-2 rounded-md font-semibold ring ring-emerald-500 text-emerald-500"
+                        className="px-4 py-2 rounded-md font-semibold ring ring-emerald-400 text-emerald-400"
                         onClick={() => setCalendarOpen(true)}
                     >
                         Open Calendar

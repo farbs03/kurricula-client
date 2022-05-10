@@ -13,7 +13,7 @@ const OnBoard = ({event}) => {
                 
                 <button 
                     onClick={() => {}} 
-                    className='w-6 h-6 text-center inline-flex bg-emerald-500 rounded-full justify-center items-center mr-2 transition duration-100 ease-in'
+                    className='w-6 h-6 text-center inline-flex bg-emerald-400 rounded-full justify-center items-center mr-2 transition duration-100 ease-in'
                 >
                     
                     <PlayIcon className='w-6 h-6 text-white dark:text-gray-900' />
