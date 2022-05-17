@@ -94,7 +94,7 @@ exports.login = async (req, res, next) => {
                 { email: email.toLowerCase() },
                 process.env.TOKEN_KEY,
                 {
-                    expiresIn: "2h",
+                    expiresIn: "20s",
                 }
             );
             await prisma.user.update({

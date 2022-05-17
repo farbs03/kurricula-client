@@ -11,10 +11,16 @@ export default function useToken() {
     localStorage.setItem('token', userToken)
     setToken(userToken)
   }
+
+  //add valid token logic
+  const validToken = () => {
+    return token!=null
+  }
   
   return {
     setToken: saveToken,
-    token
+    token: token,
+    validToken
   }
 
 }

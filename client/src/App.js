@@ -23,10 +23,10 @@ function App() {
 
   let path = window.location.pathname
 
-  const {token, setToken} = useToken()
+  const {token, setToken, validToken} = useToken()
 
   const protect = (element) => {
-    if(!token)
+    if(!validToken)
       return <Login setToken={setToken}/>
     else
       return element
