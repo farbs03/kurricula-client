@@ -1,15 +1,13 @@
-const { PrismaClient } = require("@prisma/client")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const { usePath } = require("./req/reqMap")
 
-const prisma = new PrismaClient(/*{ log: ['query', 'info']}*/)
+const { prisma } = require("./dbHandler")
+
 const NUM_HASHES = 10
 
 exports.register = async (req, res, next) => {
     const { email, password, firstName, lastName, school } = req.body
-    /*if(password.length < 6) {
-        return res.status(400).json({ message: "Password less than 6 characters "})
-    }*/
     if(!email || !password) {
         return res.status(401).json({
             message: "Email or password not present"
@@ -113,4 +111,28 @@ exports.login = async (req, res, next) => {
             message: "An error occurred"
         })
     }
+}
+
+exports.api = async (req, res, next) => {
+    const { token, data } = req.body
+    if(!token || !data || !data.path){
+        return res.status(401).json({
+            message: "Request invalid"
+        })
+    }
+    jwt.verify(token, process.env.TOKEN_KEY, async function(err, decoded){
+        if(err){
+            if(err.name==="TokenExpiredError"){
+                return res.status(401).json({
+                    message: "Token expired"
+                })
+            } else {
+                return res.status(401).json({
+                    message: "Invalid token"
+                })
+            }
+        } else {
+            return usePath(decoded, data, req, res, next)
+        }
+    })
 }

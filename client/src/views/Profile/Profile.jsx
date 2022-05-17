@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import nature from "../../assets/nature-backdrop.PNG"
 import beach from "../../assets/beach-backdrop.PNG"
@@ -11,6 +11,8 @@ import Badge from '../../components/Badge'
 
 import {fakeUser} from "../../fakeUser"
 import { theme } from '../../theme'
+
+import useAuth from '../../utils/useAuth'
 
 const PasswordVisibleButton = ({isVisible, onClick}) => {
     return (
@@ -26,6 +28,8 @@ const PasswordVisibleButton = ({isVisible, onClick}) => {
 
 const Profile = () => {
 
+    const { token } = useAuth()
+
     let linkTypes = {
         "email": <MailIcon className='w-5 h-5 mr-1 text-emerald-500' />,
         "website": <LinkIcon className='w-5 h-5 mr-1 text-emerald-500' />,
@@ -38,11 +42,37 @@ const Profile = () => {
     let links = user.bio.links
     let tags = user.bio.tags
 
-    const [email, setEmail] = useState(user.email)
-    const [userName, setUsername] = useState(user.userName)
+    const [email, setEmail] = useState("")
+    const [school, setSchool] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
 
     const [password, setPassword] = useState(user.password)
     const [passwordVisible, setPasswordVisible] = useState(false)
+
+    const getInfo = async () => {
+        const res = await fetch("/api", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                token: token,
+                data: {
+                    path: "profile"
+                }
+            })
+        })
+        const data = await res.json()
+        setEmail(data.email)
+        setSchool(data.school)
+        setFirstName(data.firstName)
+        setLastName(data.lastName)
+    }
+
+    useEffect(()=>{
+        getInfo()
+    },[])
 
     return (
         <div className='bg-white dark:bg-gray-800'>
@@ -70,7 +100,6 @@ const Profile = () => {
                         >
                             Edit Profile
                         </button>
-
                         <div className='md:flex md:items-center md:space-x-6 mb-2'>
                             <p className='font-bold text-2xl md:mb-0 mb-2'>Chris Farber</p>
                             <div className='flex items-center flex-wrap'>
@@ -112,8 +141,8 @@ const Profile = () => {
 
                             <div className="my-2">
                                 <span className='font-semibold text-gray-500 dark:text-gray-400 text-sm'>
-                                    Username
-                                    <input type="text" className={theme.textfield} value={userName} onChange={(e) => setUsername(e.target.value)}  />
+                                    First Name
+                                    <input type="text" className={theme.textfield} value={firstName} onChange={(e) => setFirstName(e.target.value)}  />
                                 </span>
                             </div>
 
